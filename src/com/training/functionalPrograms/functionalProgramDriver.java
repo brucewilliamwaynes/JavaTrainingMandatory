@@ -6,24 +6,15 @@ public class functionalProgramDriver {
         /*
         UserName userNameObj = new UserName();
         userNameObj.showUserName();
-        */
+
         CoinFlips coinFlipsObj = new CoinFlips();
         coinFlipsObj.displayCoinFlips();
+        */
+        CheckLeapYear checkLeapYearObj = new CheckLeapYear();
+        checkLeapYearObj.checkLeapYear();
     }
 /*
-    public void checkLeapYear() {
-        Scanner sc = new Scanner(System.in);
-        String yearInput;
-        do {
-            System.out.println("Enter a Valid year!");
-            yearInput = sc.next();
-        }while(yearInput.length() < 4 || yearInput.length() > 4);
-        int yearInteger = Integer.parseInt(yearInput);
-        if(yearInteger%4==0)
-            System.out.println("Leap year.");
-        else
-            System.out.println("Not a Leap Year.");
-    }
+
 
     public void powerOfDos() {
         Scanner sc = new Scanner(System.in);
