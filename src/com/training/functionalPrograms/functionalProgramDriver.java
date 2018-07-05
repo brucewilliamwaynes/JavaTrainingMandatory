@@ -15,9 +15,17 @@ public class functionalProgramDriver {
 
         PowerOfTwo powerOfTwo = new PowerOfTwo();
         powerOfTwo.powerOfDos();
-        */
+
         HarmonicNumberFinder harmonicNumberFinderObj = new HarmonicNumberFinder();
         harmonicNumberFinderObj.findHarmonicNumber();
+
+        PrimeFactorFinder primeFactorFinderObj = new PrimeFactorFinder();
+        primeFactorFinderObj.findPrimeFactor();
+
+        */
+
+        GamblerGames gamblerGamesObj = new GamblerGames();
+        gamblerGamesObj.displayGamblingDetails();
 
     }
 /*

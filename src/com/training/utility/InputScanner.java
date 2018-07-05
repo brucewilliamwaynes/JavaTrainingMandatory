@@ -45,4 +45,16 @@ public class InputScanner {
         mainTextToBeEdited = mainTextToBeEdited.replace(textToBeReplaced,textReplaceWith);
         return mainTextToBeEdited;
     }
+
+    public double findRandomWithoutRange(){
+        return Math.random();
+    }
+
+    public double findRandomWithRange(int min,int max){
+        return ((Math.random()*(max-min + 1)) - min);
+    }
+
+    public double calculatePercentage(int event,int totalEvents){
+        return ((double)(event)/(double)(totalEvents))*100.0;
+    }
 }
