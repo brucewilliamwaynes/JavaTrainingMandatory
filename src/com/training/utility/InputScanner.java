@@ -7,6 +7,7 @@ public class InputScanner {
     private String inputString;
     private int inputInt;
     private double inputDbl;
+    private boolean inputBool;
 
     public InputScanner(){
         sc = new Scanner(System.in);
@@ -22,6 +23,9 @@ public class InputScanner {
 
     public InputScanner(double temp){
         this.inputDbl = temp;
+    }
+    public InputScanner(boolean temp){
+        this.inputBool = temp;
     }
 
     public String inputString(){
@@ -39,6 +43,11 @@ public class InputScanner {
         double temp = sc.nextDouble();
         InputScanner inputScannerObj = new InputScanner(temp);
         return inputScannerObj.inputDbl;
+    }
+    public boolean inputBoolean(){
+        boolean temp = sc.nextBoolean();
+        InputScanner inputScannerObj = new InputScanner(temp);
+        return inputScannerObj.inputBool;
     }
 
     public String replaceString(String mainTextToBeEdited,String textToBeReplaced,String textReplaceWith){

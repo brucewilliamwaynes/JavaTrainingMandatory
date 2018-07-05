@@ -28,10 +28,11 @@ public class functionalProgramDriver {
         CouponNumbers couponNumbersObj = new CouponNumbers();
         couponNumberObj.displayCouponNumbers();
 
-        */
-
         CouponNumbers.displayCouponNumbers();
 
+        */
+        GenericTwoDimensionalArray genericTwoDimensionalArrayObj = new GenericTwoDimensionalArray();
+        genericTwoDimensionalArrayObj.displayTwoDimensionalArray();
     }
 /*
 
