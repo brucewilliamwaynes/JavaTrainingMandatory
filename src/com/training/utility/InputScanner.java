@@ -50,7 +50,7 @@ public class InputScanner {
         return Math.random();
     }
 
-    public double findRandomWithRange(int min,int max){
+    public static double findRandomWithRange(int min,int max){
         return ((Math.random()*(max-min + 1)) - min);
     }
 

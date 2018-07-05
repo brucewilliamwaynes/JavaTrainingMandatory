@@ -22,10 +22,15 @@ public class functionalProgramDriver {
         PrimeFactorFinder primeFactorFinderObj = new PrimeFactorFinder();
         primeFactorFinderObj.findPrimeFactor();
 
-        */
-
         GamblerGames gamblerGamesObj = new GamblerGames();
         gamblerGamesObj.displayGamblingDetails();
+
+        CouponNumbers couponNumbersObj = new CouponNumbers();
+        couponNumberObj.displayCouponNumbers();
+
+        */
+
+        CouponNumbers.displayCouponNumbers();
 
     }
 /*
