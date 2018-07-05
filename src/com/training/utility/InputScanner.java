@@ -1,18 +1,23 @@
 package com.training.utility;
 import java.util.*;
-
+/*Utility Class Created To use it for Complete Package*/
 public class InputScanner {
 
+    //Class Variables of various data types and Scanner Object
     private Scanner sc;
     private String inputString;
     private int inputInt;
     private double inputDbl;
     private boolean inputBool;
 
+    //Default Constructor to Create sc Object for each time we need input
     public InputScanner(){
         sc = new Scanner(System.in);
     }
 
+    /*
+        Parameterized Constructor to initialize different data types
+    */
     public InputScanner(String temp){
         this.inputString = temp;
     }
@@ -28,6 +33,9 @@ public class InputScanner {
         this.inputBool = temp;
     }
 
+    /*
+        Function for different data types to input and return the Input Data
+    */
     public String inputString(){
         String temp = sc.nextLine();
         InputScanner inputScannerObj = new InputScanner(temp);
@@ -50,19 +58,25 @@ public class InputScanner {
         return inputScannerObj.inputBool;
     }
 
+    /*
+        Utility Function to replace String
+    */
     public String replaceString(String mainTextToBeEdited,String textToBeReplaced,String textReplaceWith){
         mainTextToBeEdited = mainTextToBeEdited.replace(textToBeReplaced,textReplaceWith);
         return mainTextToBeEdited;
     }
 
+    //Utility Function to find RandomNumber without Range
     public double findRandomWithoutRange(){
         return Math.random();
     }
 
+    //Utility Function to find RandomNumber within a given Range
     public static double findRandomWithRange(int min,int max){
         return ((Math.random()*(max-min + 1)) - min);
     }
 
+    //Utility Function to calculate Percentage with eventSpace and totalSampleSpace
     public double calculatePercentage(int event,int totalEvents){
         return ((double)(event)/(double)(totalEvents))*100.0;
     }
