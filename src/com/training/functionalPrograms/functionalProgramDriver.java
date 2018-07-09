@@ -35,13 +35,21 @@ public class functionalProgramDriver {
 
         /* Static Function Requirement Therefore Doesn't need any Object to call function. (Static Function can be accessed through their Class Names)
         */
-         */
         /*
         CouponNumbers.displayCouponNumbers();
 
-        */
         GenericTwoDimensionalArray genericTwoDimensionalArrayObj = new GenericTwoDimensionalArray();
         genericTwoDimensionalArrayObj.displayTwoDimensionalArray();
+
+
+        TripletSumZero tripletSumZeroObj = new TripletSumZero();
+        tripletSumZeroObj.calcTripletSumZero();
+
+        Distance distanceObj = new Distance();
+        distanceObj.calcDistance();
+
+        */
+        PermutaionOfString.calcPermutationWithRecurrsionAuxilary();
     }
 /*
 

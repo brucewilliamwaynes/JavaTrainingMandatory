@@ -80,4 +80,16 @@ public class InputScanner {
     public double calculatePercentage(int event,int totalEvents){
         return ((double)(event)/(double)(totalEvents))*100.0;
     }
+
+    //Utility to implement swap character functionality in String using toCharArray() and valueOf()
+
+    public static String swapString(String sampleString , int leftIndex , int rightIndex){
+        char charArrayFromString [] = sampleString.toCharArray();
+        char temp;
+        temp = charArrayFromString[leftIndex];
+        charArrayFromString[leftIndex] = charArrayFromString[rightIndex];
+        charArrayFromString[rightIndex] = temp;
+        return (String.valueOf(charArrayFromString));
+    }
+
 }

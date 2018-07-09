@@ -1,7 +1,9 @@
 package com.training.functionalPrograms;
 import com.training.utility.InputScanner;
 
-//import java.util.Scanner;
+/*
+* Find Percentage Of Heads and Tail Events in a number of Draws !
+* */
 public class CoinFlips {
 
     private int numberOfFlips;
