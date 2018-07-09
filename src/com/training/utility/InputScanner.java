@@ -92,4 +92,9 @@ public class InputScanner {
         return (String.valueOf(charArrayFromString));
     }
 
+    public static long getTimeInMilisec(){
+        Date dateObj = new Date();
+    return (dateObj.getTime());
+    }
+
 }
