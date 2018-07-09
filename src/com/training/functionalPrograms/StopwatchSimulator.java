@@ -42,7 +42,7 @@ public class StopwatchSimulator {
             public void actionPerformed(ActionEvent e) {
                 stopTime = InputScanner.getTimeInMilisec();
                 System.out.println(stopTime);
-                displayTextObj.setText(String.valueOf(stopTime-startTime));
+                displayTextObj.setText(String.valueOf(stopTime-startTime) + "Milliseconds!");
             }
         });
 

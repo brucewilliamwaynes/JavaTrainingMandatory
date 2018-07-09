@@ -51,8 +51,15 @@ public class functionalProgramDriver {
 
         PermutaionOfString.calcPermutationWithRecurrsionAuxilary();
 
-        */
 //        StopwatchSimulator stopwatchSimulatorObj = new StopwatchSimulator();
+
+        QuadraticEquation quadraticEquationObj = new QuadraticEquation();
+        quadraticEquationObj.quadraticEqautionSolver();
+        */
+
+        WindChill windChillObj = new WindChill();
+        windChillObj.windChillFinder();
+
     }
 /*
 
