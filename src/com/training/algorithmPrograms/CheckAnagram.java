@@ -22,7 +22,7 @@ public class CheckAnagram {
         System.out.println("Enter String Two:");
         checkAnagramObj.stringTwo = inputScannerObj.inputString();
 
-        if(CommonAlgorithms.isAnagram(checkAnagramObj.stringOne,checkAnagramObj.stringTwo)){
+        if(CommonAlgorithms.isAnagram(checkAnagramObj.stringOne,checkAnagramObj.stringTwo,0)){
             System.out.println("Yes, " + checkAnagramObj.stringOne + " and " + checkAnagramObj.stringTwo + " are Anagrams!");
         }
         else{

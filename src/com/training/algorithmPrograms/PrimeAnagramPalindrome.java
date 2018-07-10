@@ -13,7 +13,8 @@ public class PrimeAnagramPalindrome {
         this.lowerLimit = 0;
         this.upperLimit = 0;
     }
-    public void findPallindromPrimeAnagrams(){
+
+    public void findPalindromPrimeAnagrams(){
         InputScanner inputScannerObj = new InputScanner();
         PrimeAnagramPalindrome primeAnagramPalindromeObj = new PrimeAnagramPalindrome();
 
@@ -26,19 +27,14 @@ public class PrimeAnagramPalindrome {
 
 
         HashMap<String, String> myHashMap = new HashMap<String, String>();
-        for(int i = lowerLimit; i <= upperLimit; i++){
-            if(CommonAlgorithms.isPallindromeForInteger(i)){
-                System.out.println(i);
-            }
+        for(int i = primeAnagramPalindromeObj.lowerLimit; i <= primeAnagramPalindromeObj.upperLimit; i++){
             if(CommonAlgorithms.isPrime(i) && CommonAlgorithms.isPallindromeForInteger(i)){
 
                 myHashMap.put(String.valueOf(i), "1" );
 
-                System.out.println(i);
-
                 for( HashMap.Entry<String, String> nextElement : myHashMap.entrySet()){
-                    if(CommonAlgorithms.isAnagram(nextElement.getKey(),String.valueOf(i)))
-                        System.out.println(nextElement.getKey() + " " + i);
+                    if(CommonAlgorithms.isAnagramForInteger(nextElement.getKey(),String.valueOf(i)))
+                        System.out.println(i + " " + nextElement.getKey());
                 }
             }
         }

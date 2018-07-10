@@ -4,26 +4,28 @@ import java.util.Arrays;
 
 public class CommonAlgorithms {
 
-    public static boolean isAnagram(String textOne, String textTwo){
-        
-        textOne = textOne.toLowerCase();
-        textTwo = textTwo.toLowerCase();
-        String tempString = "";
-        //Removing any extra characters
-        for(int i=0;i<textOne.length();i++){
-            if(textOne.charAt(i)>=97 && textOne.charAt(i)<=122)
-                tempString += textOne.charAt(i);
+    public static boolean isAnagram(String textOne, String textTwo , int flagCheck){
+
+        if(flagCheck == 0) {
+            textOne = textOne.toLowerCase();
+            textTwo = textTwo.toLowerCase();
+            String tempString = "";
+            //Removing any extra characters
+            for (int i = 0; i < textOne.length(); i++) {
+                if (textOne.charAt(i) >= 97 && textOne.charAt(i) <= 122)
+                    tempString += textOne.charAt(i);
+            }
+
+            textOne = tempString;
+            tempString = "";
+
+            for (int i = 0; i < textTwo.length(); i++) {
+                if (textTwo.charAt(i) >= 97 && textTwo.charAt(i) <= 122)
+                    tempString += textTwo.charAt(i);
+            }
+
+            textTwo = tempString;
         }
-
-        textOne = tempString;
-        tempString = "";
-
-        for(int i=0;i<textTwo.length();i++){
-            if(textTwo.charAt(i)>=97 && textTwo.charAt(i)<=122)
-                tempString += textTwo.charAt(i);
-        }
-
-        textTwo = tempString;
 
         if(textOne.length() == textTwo.length()){
             char stringUno[] = textOne.toCharArray();
@@ -38,6 +40,10 @@ public class CommonAlgorithms {
                 return true;
         }
         return false;
+    }
+
+    public static boolean isAnagramForInteger(String numberOne , String numberTwo){
+        return (isAnagram(numberOne,numberTwo,1));
     }
 
     public static boolean isPallindromeForString(String text){

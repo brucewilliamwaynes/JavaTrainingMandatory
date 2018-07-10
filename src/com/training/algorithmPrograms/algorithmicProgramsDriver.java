@@ -15,7 +15,7 @@ public class algorithmicProgramsDriver {
         */
 
         PrimeAnagramPalindrome primeAnagramPalindromeObj = new PrimeAnagramPalindrome();
-        primeAnagramPalindromeObj.findPallindromPrimeAnagrams();
+        primeAnagramPalindromeObj.findPalindromPrimeAnagrams();
 
 
 
