@@ -12,14 +12,9 @@ public class algorithmicProgramsDriver {
 
         CommonAlgorithms.PrimeNumbersInRange(0,1000);
 
-        */
-
         PrimeAnagramPalindrome primeAnagramPalindromeObj = new PrimeAnagramPalindrome();
         primeAnagramPalindromeObj.findPalindromPrimeAnagrams();
-
-
-
-//        System.out.println(CommonAlgorithms.isPallindromeForInteger(121));
+        */
     }
 
     public static void main(String args[]){

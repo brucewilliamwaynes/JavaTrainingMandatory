@@ -90,4 +90,90 @@ public class CommonAlgorithms {
         }
     }
 
+    public static String[] bubbleSortForString(String list[]){
+        String temp = "";
+        for(int i=0;i<list.length-1;i++){
+            for(int j=0;j<list.length-i-1;j++){
+                if(list[j].compareTo(list[j+1]) > 0){
+                    temp = list[j];
+                    list[j] = list[j+1];
+                    list[j+1] = temp;
+                }
+            }
+        }
+        return list;
+    }
+
+    public static int[] bubbleSortForInteger(int list[]){
+        int temp = 0;
+        for(int i=0;i<list.length-1;i++){
+            for(int j=0;j<list.length-i-1;j++){
+                if(list[j] - list[j+1] > 0){
+                    temp = list[j];
+                    list[j] = list[j+1];
+                    list[j+1] = temp;
+                }
+            }
+        }
+        return list;
+    }
+
+    public static int[] insertionSortForInteger(int list[]){
+        for(int i=1;i<list.length;i++){
+            int indexKey = list[i];
+            for(int j = i-1; j >= 0 && list[j] > indexKey; j--){
+                list[j+1] = list[j];
+            }
+        }
+        return list;
+    }
+
+    public static String[] insertionSortForString(String list[]){
+        for(int i=1;i<list.length;i++){
+            String indexKey = list[i];
+            for(int j = i-1; j >= 0 && list[j].compareTo(indexKey) > 0; j--){
+                list[j+1] = list[j];
+            }
+        }
+        return list;
+    }
+
+    public static boolean binarySearchForInteger(int listOfNumbers[],int searchKey){
+        Arrays.sort(listOfNumbers);
+        int leftIndex = 0;
+        int rightIndex = listOfNumbers.length - 1;
+        int mid = (leftIndex + rightIndex)/2;
+        while(leftIndex < rightIndex){
+            if(listOfNumbers[mid] == searchKey){
+                return true;
+            }
+            else if(listOfNumbers[mid] < searchKey){
+                leftIndex = mid + 1;
+            }
+            else
+                rightIndex = mid -1 ;
+        }
+        return false;
+    }
+
+
+    public static boolean binarySearchForString(String listOfWords[],String searchKey){
+
+        listOfWords = bubbleSortForString(listOfWords);
+        int leftIndex = 0;
+        int rightIndex = listOfWords.length - 1;
+        int mid = (leftIndex + rightIndex)/2;
+        while(leftIndex < rightIndex){
+            if(listOfWords[mid].compareTo(searchKey) == 0){
+                return true;
+            }
+            else if(listOfWords[mid].compareTo(searchKey) < 0){
+                leftIndex = mid + 1;
+            }
+            else
+                rightIndex = mid -1 ;
+        }
+        return false;
+    }
+
 }
