@@ -4,18 +4,17 @@ public class GenericTemplateClass<genericTemplate> {
 
     genericTemplate genericTemplateElement;
 
-    GenericTemplateClass(){
+    public GenericTemplateClass(){
 
     }
 
-    GenericTemplateClass(genericTemplate genericTemplateElement){
+    private GenericTemplateClass(genericTemplate genericTemplateElement){
         this.genericTemplateElement = genericTemplateElement;
     }
 
     public genericTemplate getgenericTemplateElement(){
         return this.genericTemplateElement;
     }
-
 
     public static <genericTemplate extends Comparable<genericTemplate>> genericTemplate[] bubbleSortGeneric(genericTemplate list[]){
         genericTemplate temp ;

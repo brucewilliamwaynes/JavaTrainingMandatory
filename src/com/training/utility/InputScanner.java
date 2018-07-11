@@ -1,7 +1,9 @@
 package com.training.utility;
+import java.io.*;
+import java.io.IOException;
 import java.util.*;
 /*Utility Class Created To use it for Complete Package*/
-public class InputScanner {
+public class InputScanner extends  GenericTemplateClass{
 
     //Class Variables of various data types and Scanner Object
     private Scanner sc;
@@ -36,8 +38,27 @@ public class InputScanner {
     /*
         Function for different data types to input and return the Input Data
     */
+
+    public static <genericTemplate> genericTemplate genericInput(Class<genericTemplate> classType) throws IOException {
+        InputScanner inputScannerObj = new InputScanner();
+        try{
+            if(classType == Integer.class)
+                return classType.cast(inputScannerObj.inputInteger());
+            if(classType == String.class)
+                return classType.cast(inputScannerObj.inputString());
+            if(classType == Double.class)
+                return classType.cast(inputScannerObj.inputDouble());
+            if(classType == Boolean.class)
+                return classType.cast(inputScannerObj.inputBoolean());
+        }
+        catch (InputMismatchException e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
     public String inputString(){
-        String temp = sc.nextLine();
+        String temp = sc.next();
         InputScanner inputScannerObj = new InputScanner(temp);
         return inputScannerObj.inputString;
     }
@@ -96,7 +117,6 @@ public class InputScanner {
         Date dateObj = new Date();
     return (dateObj.getTime());
     }
-
 
 
 }
