@@ -20,8 +20,10 @@ public class CouponNumbers {
 
             distinctNumberTest = (int)(InputScanner.findRandomWithRange(0,this.distinctNumbers));
 
+            System.out.println(distinctNumberTest);
             if((distinctNumberTest < this.distinctNumbers) && (!checkList[distinctNumberTest])){
                 checkList[distinctNumberTest] = true;
+//                System.out.println(distinctNumberTest);
                 currentDistinctCount += 1;
             }
 

@@ -16,23 +16,48 @@ public class GenericTemplateClass<genericTemplate> {
         return this.genericTemplateElement;
     }
 
-    public int genericComparision(genericTemplate elementOne, genericTemplate elementTwo){
-        if(elementOne.getClass().getName().compareTo("java.lang.Integer") == 0)
-            return (elementOne - elementTwo);
-    }
 
-    public static <genericTemplate> genericTemplate bubbleSortForString(genericTemplate list[]){
+    public static <genericTemplate extends Comparable<genericTemplate>> genericTemplate[] bubbleSortGeneric(genericTemplate list[]){
         genericTemplate temp ;
 
         GenericTemplateClass genericTemplateClassObj = new GenericTemplateClass();
 
         for(int i=0;i<list.length-1;i++){
             for(int j=0;j<list.length-i-1;j++){
-                if(genericTemplateClassObj.genericComparision(list[j],list[j+1]) > 0){
+                if(list[j].compareTo(list[j+1]) > 0){
                     temp = list[j];
                     list[j] = list[j+1];
                     list[j+1] = temp;
                 }
+            }
+        }
+        return list;
+    }
+
+    public static <genericTemplate extends Comparable<genericTemplate>> boolean binarySearchGeneric(genericTemplate list[],genericTemplate searchKey){
+
+        list = bubbleSortGeneric(list);
+        int leftIndex = 0;
+        int rightIndex = list.length - 1;
+        int mid = (leftIndex + rightIndex)/2;
+        while(leftIndex < rightIndex){
+            if(list[mid].compareTo(searchKey) == 0){
+                return true;
+            }
+            else if(list[mid].compareTo(searchKey) < 0){
+                leftIndex = mid + 1;
+            }
+            else
+                rightIndex = mid -1 ;
+        }
+        return false;
+    }
+
+    public static <genericTemplate extends Comparable<genericTemplate>> genericTemplate[] insertionSortGeneric(genericTemplate list[]){
+        for(int i=1;i<list.length;i++){
+            genericTemplate indexKey = list[i];
+            for(int j = i-1; j >= 0 && list[j].compareTo(indexKey) > 0; j--){
+                list[j+1] = list[j];
             }
         }
         return list;

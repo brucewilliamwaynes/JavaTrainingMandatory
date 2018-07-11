@@ -28,8 +28,10 @@ public class PrimeAnagramPalindrome {
 
         HashMap<String, String> myHashMap = new HashMap<String, String>();
         for(int i = primeAnagramPalindromeObj.lowerLimit; i <= primeAnagramPalindromeObj.upperLimit; i++){
-            if(CommonAlgorithms.isPrime(i) && CommonAlgorithms.isPallindromeForInteger(i)){
-
+            if(CommonAlgorithms.isPrime(i) && CommonAlgorithms.isPallindromeForInteger(i)) {
+                System.out.println(i);
+            }
+            if(CommonAlgorithms.isPrime(i)){
                 myHashMap.put(String.valueOf(i), "1" );
 
                 for( HashMap.Entry<String, String> nextElement : myHashMap.entrySet()){

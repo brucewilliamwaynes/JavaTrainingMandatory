@@ -29,7 +29,8 @@ public class functionalProgramDriver {
 
         GamblerGames gamblerGamesObj = new GamblerGames();
         gamblerGamesObj.displayGamblingDetails();
-
+        */
+        /*
         CouponNumbers couponNumbersObj = new CouponNumbers();
         couponNumberObj.displayCouponNumbers();
 
@@ -37,26 +38,27 @@ public class functionalProgramDriver {
         */
         /*
         CouponNumbers.displayCouponNumbers();
-
+        */
+        /*
         GenericTwoDimensionalArray genericTwoDimensionalArrayObj = new GenericTwoDimensionalArray();
         genericTwoDimensionalArrayObj.displayTwoDimensionalArray();
-
-
+        */
+        /*
         TripletSumZero tripletSumZeroObj = new TripletSumZero();
         tripletSumZeroObj.calcTripletSumZero();
-
+        */
+        /*
         Distance distanceObj = new Distance();
         distanceObj.calcDistance();
+        */
 
-
-        PermutaionOfString.calcPermutationWithRecurrsionAuxilary();
+//        PermutaionOfString.calcPermutationWithRecurrsionAuxilary();
 
 //        StopwatchSimulator stopwatchSimulatorObj = new StopwatchSimulator();
-
+        /*
         QuadraticEquation quadraticEquationObj = new QuadraticEquation();
         quadraticEquationObj.quadraticEqautionSolver();
         */
-
         WindChill windChillObj = new WindChill();
         windChillObj.windChillFinder();
 

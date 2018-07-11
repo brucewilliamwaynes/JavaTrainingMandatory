@@ -21,7 +21,7 @@ public class PowerOfTwo {
         }while(powerOfTwoObj.limit>31 || powerOfTwoObj.limit < 0);
 
 
-        for(int i=0;i<powerOfTwoObj.limit;i++) {
+        for(int i=0;i<=powerOfTwoObj.limit;i++) {
             System.out.println((int)(Math.pow(2,i)));
         }
     }
