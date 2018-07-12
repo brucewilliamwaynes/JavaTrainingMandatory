@@ -1,5 +1,6 @@
 package com.training.utility;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CommonAlgorithms {
@@ -174,6 +175,38 @@ public class CommonAlgorithms {
                 rightIndex = mid -1 ;
         }
         return false;
+    }
+
+    public static int getLowerLimitInPowerOf2(int rawNumber){
+
+        int count = 0;
+
+        while(rawNumber > 0){
+            rawNumber /= 2;
+            count++;
+        }
+
+        return count;
+    }
+
+    public static ArrayList<String> segregateWordsInFile(String inputString){
+
+        String word = "";
+        ArrayList<String> list = new ArrayList<String>();
+
+        for(int i=0;i<inputString.length();i++){
+            if(inputString.charAt(i) != ',' && inputString.charAt(i) != ' '){
+                word += inputString.charAt(i);
+            }
+            else{
+                list.add(word);
+                word = "";
+            }
+        }
+
+        list.add(word.substring(0,word.length()-1));
+
+        return list;
     }
 
 }

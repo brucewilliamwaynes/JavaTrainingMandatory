@@ -2,9 +2,11 @@ package com.training.algorithmPrograms;
 
 import com.training.utility.CommonAlgorithms;
 
+import java.io.IOException;
+
 public class algorithmicProgramsDriver {
 
-    algorithmicProgramsDriver(){
+    algorithmicProgramsDriver() throws IOException{
 
         /*
         CheckAnagram checkAnagramObj = new CheckAnagram();
@@ -17,10 +19,14 @@ public class algorithmicProgramsDriver {
         primeAnagramPalindromeObj.findPalindromPrimeAnagrams();
         */
 
+//        NthNumberFinder.findNthNumber();
+            SearchWordFromFile searchWordFromFileObj = new SearchWordFromFile();
+            searchWordFromFileObj.searchWord();
+
 
     }
 
-    public static void main(String args[]){
+    public static void main(String args[])throws IOException{
         new algorithmicProgramsDriver();
     }
 }

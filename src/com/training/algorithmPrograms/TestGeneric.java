@@ -1,5 +1,6 @@
 package com.training.algorithmPrograms;
 
+import com.training.utility.CommonAlgorithms;
 import com.training.utility.GenericTemplateClass;
 import com.training.utility.InputScanner;
 import sun.net.www.content.text.Generic;
@@ -20,55 +21,115 @@ public class TestGeneric {
         this.limit = 0;
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
 
         TestGeneric testGenericObj = new TestGeneric();
         InputScanner inputScannerObj = new InputScanner();
 
-        System.out.println("Enter Limit of List!");
-        testGenericObj.limit = inputScannerObj.inputInteger();
 
-        String[] wordsList = new String[testGenericObj.limit];
 
-        for(int i=0;i<testGenericObj.limit;i++) {
-            System.out.println("Enter a new String!");
-            wordsList[i] = inputScannerObj.inputString();
+        System.out.println("Do You want Run Bubble Sort!");
+
+        boolean choice = inputScannerObj.inputBoolean();
+
+        if (choice) {
+            System.out.println("Enter Limit of List for Bubble Sort!");
+            testGenericObj.limit = inputScannerObj.inputInteger();
+
+            ArrayList<Integer> wordsList = new ArrayList<Integer>(testGenericObj.limit);
+
+            for (int i = 0; i < testGenericObj.limit; i++) {
+                System.out.println("Enter a new number!");
+                wordsList.add(i, inputScannerObj.inputInteger());
+            }
+
+            //Integer[] numberList = new Integer[this.limit];
+
+
+            testGenericObj.startTime = InputScanner.getTimeInMilisec();
+            wordsList = GenericTemplateClass.bubbleSortGeneric(wordsList);
+            testGenericObj.stopTime = InputScanner.getTimeInMilisec();
+
+            for (Integer element : wordsList)
+                System.out.println(element);
+
+            System.out.println("Bubble Sort took " + (testGenericObj.stopTime - testGenericObj.startTime) + "Milliseconds!");
         }
+        System.out.println("Do you want to run Insertion Sort!");
+        choice = inputScannerObj.inputBoolean();
+        if (choice) {
+            System.out.println("Enter Limit of List for Insertion Sort!");
+            testGenericObj.limit = inputScannerObj.inputInteger();
 
-        //Integer[] numberList = new Integer[this.limit];
+            ArrayList<String> wordsList = new ArrayList<String>(testGenericObj.limit);
+
+            for (int i = 0; i < testGenericObj.limit; i++) {
+                System.out.println("Enter a new String!");
+                wordsList.add(i, inputScannerObj.inputString());
+            }
+
+            testGenericObj.startTime = InputScanner.getTimeInMilisec();
+            wordsList = GenericTemplateClass.insertionSortGeneric(wordsList);
+            testGenericObj.stopTime = InputScanner.getTimeInMilisec();
+
+            for (String element : wordsList)
+                System.out.println(element);
+
+            System.out.println("Insertion Sort took " + (testGenericObj.stopTime - testGenericObj.startTime) + "Milliseconds!");
+            choice = false;
+        }
+        System.out.println("Do you want to run Binary Search!");
+        choice = inputScannerObj.inputBoolean();
+        if(choice){
+            System.out.println("Enter Limit of List for Binary Search!");
+            testGenericObj.limit = inputScannerObj.inputInteger();
+
+            ArrayList<String> wordsList = new ArrayList<String>(testGenericObj.limit);
+
+            for (int i = 0; i < testGenericObj.limit; i++) {
+                System.out.println("Enter a new String!");
+                wordsList.add(i, inputScannerObj.inputString());
+            }
+
+            System.out.println("Enter word to search!");
+            String keyToSearch = inputScannerObj.inputString();
 
 
-        testGenericObj.startTime = InputScanner.getTimeInMilisec();
-        wordsList = GenericTemplateClass.bubbleSortGeneric(wordsList);
-        testGenericObj.stopTime = InputScanner.getTimeInMilisec();
+            testGenericObj.startTime = InputScanner.getTimeInMilisec();
+            boolean ans = GenericTemplateClass.binarySearchGeneric(wordsList, keyToSearch);
 
-        for( String element : wordsList)
-            System.out.println(element);
+            if (ans)
+                System.out.println("Found!!");
+            else
+                System.out.println("Not Found Sorry !");
 
-        System.out.println("Bubble Sort took " + (testGenericObj.stopTime - testGenericObj.startTime) + "Milliseconds!");
+            testGenericObj.stopTime = InputScanner.getTimeInMilisec();
 
-        testGenericObj.startTime = InputScanner.getTimeInMilisec();
-        wordsList = GenericTemplateClass.insertionSortGeneric(wordsList);
-        testGenericObj.stopTime = InputScanner.getTimeInMilisec();
+            System.out.println("Binary Searching took " + (testGenericObj.stopTime - testGenericObj.startTime) + "Milliseconds!");
+        }
+        System.out.println("Do you want to Run Merge Sort!");
+        choice = inputScannerObj.inputBoolean();
 
-        for( String element : wordsList)
-            System.out.println(element);
+        if(choice){
+            System.out.println("Enter limit of Merge Sort!");
+            testGenericObj.limit = inputScannerObj.inputInteger();
 
-        System.out.println("Insertion Sort took " + (testGenericObj.stopTime - testGenericObj.startTime) + "Milliseconds!");
+            ArrayList<String> wordsList = new ArrayList<String>(testGenericObj.limit);
 
-        System.out.println("Enter word to search!");
-        String keyToSeach = inputScannerObj.inputString();
+            for (int i = 0; i < testGenericObj.limit; i++) {
+                System.out.println("Enter a new String!");
+                wordsList.add(i, inputScannerObj.inputString());
+            }
 
-        testGenericObj.startTime = InputScanner.getTimeInMilisec();
-        boolean ans = GenericTemplateClass.binarySearchGeneric(wordsList, keyToSeach);
-        testGenericObj.stopTime = InputScanner.getTimeInMilisec();
 
-        if(ans)
-            System.out.println("Found!!");
-        else
-            System.out.println("Not Found Sorry !");
+            wordsList = GenericTemplateClass.mergeSortGenericAuxillary(wordsList,0,wordsList.size()-1);
 
-        System.out.println("Binary Searching took " + (testGenericObj.stopTime - testGenericObj.startTime) + "Milliseconds!");
+            System.out.println(wordsList.size());
+
+            for (String element : wordsList)
+                System.out.println(element);
+
+        }
 
     }
 }
