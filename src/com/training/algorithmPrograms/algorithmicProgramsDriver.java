@@ -44,8 +44,10 @@ public class algorithmicProgramsDriver {
 //        System.out.println(CommonAlgorithms.sqrt(9));
 
 //        System.out.println(CommonAlgorithms.toBinary(106));
+        /*
         Binary binaryObj = new Binary();
         binaryObj.displayBinary();
+        */
     }
 
     public static void main(String args[])throws IOException,ParseException{

@@ -1,0 +1,30 @@
+package com.training.dataStructurePrograms;
+
+import com.training.utility.*;
+
+import java.io.IOException;
+
+public class SearchUsingCustomList {
+    private String stringInput;
+    private String searchKey;
+    SearchUsingCustomList(){
+        this.stringInput = "";
+        this.searchKey = "";
+    }
+
+    public void displayResultOfSearch()throws IOException{
+        InputScanner inputScannerObj = new InputScanner();
+        SearchUsingCustomList searchUsingCustomListObj = new SearchUsingCustomList();
+        searchUsingCustomListObj.stringInput = InputScanner.readInputFromFile();
+
+        UnorderedList myList = new UnorderedList();
+        myList = UnorderedList.segregateWordsIntoList(searchUsingCustomListObj.stringInput);
+        System.out.println("Enter word to search! ");
+        searchUsingCustomListObj.searchKey = inputScannerObj.inputString();
+        myList.displayList();
+        if(myList.searchNode(searchUsingCustomListObj.searchKey))
+            System.out.println("Word Found !");
+        else
+            System.out.println("Opps ! Not Found !");
+    }
+}

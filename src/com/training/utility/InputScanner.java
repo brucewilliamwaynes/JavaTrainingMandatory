@@ -58,7 +58,11 @@ public class InputScanner extends  GenericTemplateClass{
     }
 
     public static String readInputFromFile()throws FileNotFoundException{
-        File inputFile = new File("C:\\Users\\1022773\\Desktop\\Training\\Notes\\testfile");
+        InputScanner inputScannerObj = new InputScanner();
+        System.out.println("Enter destination of input file!");
+        String inputDestination = inputScannerObj.inputString();
+
+        File inputFile = new File(inputDestination);
         Scanner sc = new Scanner(inputFile);
         sc.useDelimiter("\\Z");
         String inputFileToString = sc.next();
