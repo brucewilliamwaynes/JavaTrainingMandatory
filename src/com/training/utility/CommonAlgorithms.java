@@ -1,7 +1,12 @@
 package com.training.utility;
 
+import com.training.functionalPrograms.CheckLeapYear;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 public class CommonAlgorithms {
 
@@ -177,7 +182,7 @@ public class CommonAlgorithms {
         return false;
     }
 
-    public static int getLowerLimitInPowerOf2(int rawNumber){
+    public static int getLowerLimitInPowerOf2(long rawNumber){
 
         int count = 0;
 
@@ -209,4 +214,103 @@ public class CommonAlgorithms {
         return list;
     }
 
+    public static boolean dateValidator(String inputString)throws ParseException{
+        if(inputString.trim().equals("")){
+            return false;
+        }
+        else{
+            SimpleDateFormat simpleDateFormatObj = new SimpleDateFormat("MM/dd/yyyy");
+            simpleDateFormatObj.setLenient(false);
+
+            try{
+                Date javaDate = simpleDateFormatObj.parse(inputString);
+            }
+            catch (ParseException e){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static String dayOfWeek(String inputDate)throws ParseException{
+
+        int month , day , year;
+        month = Integer.parseInt(inputDate.substring(0,2));
+        day = Integer.parseInt(inputDate.substring(3,5));
+        year = Integer.parseInt(inputDate.substring(inputDate.length() - 4));
+
+        year = year - (14-month)/12;
+        year = year + (year/4) - (year/100) + (year/400);
+        month = month + 12 * ((14-month)/12) - 2;
+        day = (day + year + (31 * month)/12) % 7;
+
+        String daysOfWeek[] = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+        return daysOfWeek[day];
+    }
+
+    public static double temperatureConversion(int choice,double temperature){
+        if(choice == 1){
+            return ((temperature * 9.0) / 5.0 + 32.0);
+        }
+        else
+            return ((temperature - 32.0) * 5.0)/9.0;
+    }
+
+    public static double monthlyPayment(double principal, int year, double rate){
+        rate = rate/(12.0*100.0);
+        year = 12 * year;
+        return (( principal * rate ) / (1.0 - (1.0/(Math.pow(1.0 + rate,year)))));
+    }
+
+    public static boolean isNegative(int number){
+        return number < 0 ? true : false;
+    }
+
+    public static double sqrt(int number){
+        return sqrt((double)number);
+    }
+
+    public static double sqrt(double number){
+        double t = number;
+        final double epislon = 1e-15;
+        while(Math.abs(t - number/t)>epislon*t) {
+            t = (number/t + t)/2;
+        }
+        return t;
+    }
+
+    public static String reverseString(String inputString){
+        String tempString = "";
+        for(int i=0;i<inputString.length();i++){
+            tempString = inputString.charAt(i) + tempString;
+        }
+        return tempString;
+    }
+
+    public static String toBinary(int number){
+        String binaryFromNumber = "";
+        while(number > 0){
+            binaryFromNumber = String.valueOf(number%2) + binaryFromNumber;
+            number = number/2;
+        }
+        return binaryFromNumber;
+    }
+
+    public static String addPaddingToBinaryToByte(String binary){
+        int limit = (8-(binary.length()));
+        for(int i=1;i<=limit;i++){
+            binary = "0" + binary;
+        }
+        return binary;
+    }
+
+    public static long toDecimal(String binary){
+        long  decimalEquivalent = 0;
+        binary = reverseString(binary);
+        for(int i=0;i<binary.length();i++){
+            if(binary.charAt(i) == '1')
+                decimalEquivalent += (long)Math.pow(2,i);
+        }
+        return decimalEquivalent;
+    }
 }

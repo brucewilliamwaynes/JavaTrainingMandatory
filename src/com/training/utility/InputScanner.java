@@ -128,4 +128,5 @@ public class InputScanner extends  GenericTemplateClass{
     }
 
 
+
 }
