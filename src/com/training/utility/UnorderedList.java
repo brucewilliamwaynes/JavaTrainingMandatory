@@ -161,4 +161,31 @@ public class UnorderedList<T extends Comparable<? super T>> {
         tempList.insertNode(word.substring(0,word.length()-1));
         return tempList;
     }
+
+    public void bubbleSortForUndorderedList(){
+        Node<T> prev;
+        Node<T> current;
+        Node<T> next;
+        Node<T> outerLoop;
+        Node<T> endPoint;
+        outerLoop = headList;
+        endPoint = null;
+        while(outerLoop!=null){
+            current = headList;
+            prev = current;
+            next = current.next;
+            while (current!= endPoint){
+                if(current.data.compareTo(next.data) > 0){
+                    prev.next = next;
+                    current.next = next.next;
+                    next.next = current;
+                }
+                prev = current;
+                current = current.next;
+                next = next.next;
+            }
+            endPoint = prev;
+            outerLoop = outerLoop.next;
+        }
+    }
 }

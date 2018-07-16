@@ -165,4 +165,16 @@ public class OrderedList<T extends Comparable<? super  T>> {
         }
         return list;
     }
+
+    public void popList(){
+        Node<T> currentNode = headList;
+        Node<T> tempNode = null;
+        while(currentNode.next != null){
+            tempNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        endList = tempNode;
+        endList.next = null;
+    }
+
 }
