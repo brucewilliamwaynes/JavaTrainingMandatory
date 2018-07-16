@@ -17,14 +17,15 @@ public class SearchUsingCustomList {
         SearchUsingCustomList searchUsingCustomListObj = new SearchUsingCustomList();
         searchUsingCustomListObj.stringInput = InputScanner.readInputFromFile();
 
-        UnorderedList myList = new UnorderedList();
+        UnorderedList<String>  myList = new UnorderedList<String>();
         myList = UnorderedList.segregateWordsIntoList(searchUsingCustomListObj.stringInput);
         System.out.println("Enter word to search! ");
         searchUsingCustomListObj.searchKey = inputScannerObj.inputString();
-        myList.displayList();
         if(myList.searchNode(searchUsingCustomListObj.searchKey))
             System.out.println("Word Found !");
         else
             System.out.println("Opps ! Not Found !");
+
+
     }
 }

@@ -1,10 +1,10 @@
 package com.training.utility;
 
-public class Node<genericTemplate> {
-    genericTemplate data;
-    Node next;
+public class Node<T> {
+    T data;
+    Node<T> next;
 
-    Node(genericTemplate value){
+     Node(T value){
         this.data = value;
         this.next = null;
     }

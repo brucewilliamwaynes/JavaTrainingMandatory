@@ -21,10 +21,10 @@ public class algorithmicProgramsDriver {
         */
 
 //        NthNumberFinder.findNthNumber();
-        /*
+
             SearchWordFromFile searchWordFromFileObj = new SearchWordFromFile();
             searchWordFromFileObj.searchWord();
-        */
+
         /*
         CurrencyDispenser currencyDispenserObj = new CurrencyDispenser();
         currencyDispenserObj.displayDispensedCurrency();

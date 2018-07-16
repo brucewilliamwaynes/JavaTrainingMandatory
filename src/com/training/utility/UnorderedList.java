@@ -1,9 +1,9 @@
 package com.training.utility;
 
-public class UnorderedList<genericTemplate> {
+public class UnorderedList<T extends Comparable<? super T>> {
 
-    Node headList;
-    Node endList;
+    private Node<T> headList;
+    private Node<T> endList;
 
     public UnorderedList(){
         this.headList = null;
@@ -26,21 +26,21 @@ public class UnorderedList<genericTemplate> {
         return size;
     }
 
-    public void insertNode(genericTemplate item){
-        Node currentNode = headList;
+    public void insertNode(T item){
+//        Node<T> currentNode = headList;
         if(headList == null){
-            headList = new Node(item);
+            headList = new Node<T>(item);
             endList = headList;
         }
         else{
-            endList.next = new Node(item);
+            endList.next = new Node<T>(item);
             endList = endList.next;
         }
     }
 
     public void removeNodeAtIndex(int index){
-        Node currentNode = headList;
-        Node tempNode = currentNode;
+        Node<T> currentNode = headList;
+        Node<T> tempNode = currentNode;
         int currentIndex = 0;
         while(currentNode != null && currentIndex < index){
             tempNode = currentNode;
@@ -55,21 +55,21 @@ public class UnorderedList<genericTemplate> {
         }
     }
 
-    public <genericTemplate extends Comparable<genericTemplate>>boolean searchNode(genericTemplate item){
-        Node currentNode = headList;
+    public boolean searchNode(T item){
+        Node<T> currentNode = headList;
         while (currentNode != null){
-            if(String.valueOf(currentNode.data).compareTo(String.valueOf(item)) == 0)
+            if(item.compareTo(currentNode.data) == 0)
                 return true;
             currentNode = currentNode.next;
         }
         return false;
     }
 
-    public int returnIndexOfItem(genericTemplate item){
-        Node currentNode = headList;
+    public int returnIndexOfItem(T item){
+        Node<T> currentNode = headList;
         int currentIndex = 0;
         while (currentNode != null){
-            if(currentNode.data == item){
+            if(item.compareTo(currentNode.data) == 0){
                 return currentIndex;
             }
             currentIndex++;
@@ -78,19 +78,17 @@ public class UnorderedList<genericTemplate> {
         return -1;
     }
 
-
-
     public void displayList(){
-        Node currentNode = headList;
+        Node<T> currentNode = headList;
         while(currentNode != null){
             System.out.println(currentNode.data);
             currentNode = currentNode.next;
         }
     }
 
-    public void insertAtIndex(int index,genericTemplate item){
-        Node currentNode = headList;
-        Node tempNode = currentNode;
+    public void insertAtIndex(int index,T item){
+        Node<T> currentNode = headList;
+        Node<T> tempNode = currentNode;
         int currentIndex = 0;
         while(currentNode != null && currentIndex < index){
             tempNode = currentNode;
@@ -98,17 +96,17 @@ public class UnorderedList<genericTemplate> {
             currentIndex++;
         }
         if(currentNode != null) {
-            tempNode.next = new Node(item);
+            tempNode.next = new Node<T>(item);
             tempNode.next.next = currentNode;
         }
         else{
             System.out.println("Cannot find the index , adding at the last!");
-            endList.next = new Node(item);
+            endList.next = new Node<T>(item);
             endList =  endList.next;
         }
     }
 
-    public void replaceElementAtIndex(int index,genericTemplate item){
+    public void replaceElementAtIndex(int index,T item){
         Node currentNode = headList;
         Node tempNode = currentNode;
         int currentIndex = 0;
@@ -122,12 +120,12 @@ public class UnorderedList<genericTemplate> {
         }
         else{
             System.out.println("Cannot find the index to be replaced! , adding at the last!");
-            endList.next = new Node(item);
+            endList.next = new Node<T>(item);
             endList =  endList.next;
         }
     }
 
-    public void removemNodeElement(genericTemplate item){
+    public void removemNodeElement(T item){
         int index = returnIndexOfItem(item);
         if(index > -1)
             removeNodeAtIndex(index);
@@ -136,7 +134,7 @@ public class UnorderedList<genericTemplate> {
     }
 
     public static UnorderedList segregateWordsIntoList(String inputString){
-        UnorderedList tempList = new UnorderedList();
+        UnorderedList<String> tempList = new UnorderedList<String>();
         String word = "";
         for(int i=0;i<inputString.length();i++){
             if(inputString.charAt(i) != ','){
@@ -150,5 +148,4 @@ public class UnorderedList<genericTemplate> {
         tempList.insertNode(word.substring(0,word.length()-1));
         return tempList;
     }
-
 }

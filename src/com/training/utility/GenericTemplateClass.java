@@ -23,15 +23,17 @@ public class GenericTemplateClass<genericTemplate> {
 
         GenericTemplateClass genericTemplateClassObj = new GenericTemplateClass();
 
-        for(int i=0;i<list.size()-1;i++){
-            for(int j=0;j<list.size()-i-1;j++){
-                if(list.get(j).compareTo(list.get(j+1)) > 0){
+        for(int i=0;i<list.size()-1;i++) {
+            for (int j = 0; j < list.size() - i - 1; j++) {
+                if (list.get(j).compareTo(list.get(j + 1)) > 0) {
                     temp = list.get(j);
-                    list.add(j,list.get(j+1));
-                    list.add(j+1,temp);
+                    list.add(j, list.get(j + 1));
+                    list.add(j + 1, temp);
                 }
             }
         }
+
+
         return list;
     }
 
@@ -39,12 +41,11 @@ public class GenericTemplateClass<genericTemplate> {
 
         list = bubbleSortGeneric(list);
 
-
         int leftIndex = 0;
         int rightIndex = list.size() - 1;
         int mid;
 
-        while(leftIndex < rightIndex){
+        while(leftIndex <= rightIndex){
 
             mid = (leftIndex + rightIndex)/2;
 
