@@ -21,11 +21,14 @@ public class SearchUsingCustomList {
         myList = UnorderedList.segregateWordsIntoList(searchUsingCustomListObj.stringInput);
         System.out.println("Enter word to search! ");
         searchUsingCustomListObj.searchKey = inputScannerObj.inputString();
-        if(myList.searchNode(searchUsingCustomListObj.searchKey))
+        if(myList.searchNode(searchUsingCustomListObj.searchKey)) {
             System.out.println("Word Found !");
-        else
+            myList.removeNodeAtIndex(myList.returnIndexOfItem(searchUsingCustomListObj.searchKey));
+        }
+        else {
             System.out.println("Opps ! Not Found !");
-
-
+            myList.insertNode(searchUsingCustomListObj.searchKey);
+        }
+        InputScanner.writeInputToFileFromList(myList);
     }
 }

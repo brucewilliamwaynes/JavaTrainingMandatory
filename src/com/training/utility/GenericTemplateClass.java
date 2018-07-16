@@ -2,6 +2,8 @@ package com.training.utility;
 
 import java.util.ArrayList;
 
+
+
 public class GenericTemplateClass<genericTemplate> {
 
     genericTemplate genericTemplateElement;
@@ -71,7 +73,7 @@ public class GenericTemplateClass<genericTemplate> {
         return list;
     }
 
-    public static <genericTemplate extends Comparable<genericTemplate>> ArrayList<genericTemplate> mergeGeneric(ArrayList<genericTemplate> list,int leftIndex,int midIndex,int rightIndex){
+    public <genericTemplate extends Comparable<genericTemplate>> void mergeGeneric(ArrayList<genericTemplate> list,int leftIndex,int midIndex,int rightIndex){
 
         int i, j, k;
         int sizeOfLeftArray = midIndex - leftIndex + 1;
@@ -122,14 +124,13 @@ public class GenericTemplateClass<genericTemplate> {
             j++;
             k++;
         }
-
-        return list;
     }
 
-    public static <genericTemplate extends Comparable<genericTemplate>> ArrayList<genericTemplate> mergeSortGenericAuxillary(ArrayList<genericTemplate> list,int leftIndex, int rightIndex){
+    public  <genericTemplate extends Comparable<genericTemplate>>  void mergeSortGenericAuxillary(ArrayList<genericTemplate> list,int leftIndex, int rightIndex){
+
 
         if(leftIndex < rightIndex){
-            int midIndex = leftIndex + (rightIndex - leftIndex)/2;
+            int midIndex = (leftIndex + rightIndex)/2;
 
             mergeSortGenericAuxillary(list, leftIndex , midIndex);
 
@@ -137,15 +138,6 @@ public class GenericTemplateClass<genericTemplate> {
 
             mergeGeneric(list,leftIndex,midIndex,rightIndex);
         }
-
-        return list;
-    }
-
-    public static <genericTemplate extends Comparable<genericTemplate>> ArrayList<genericTemplate> mergeSortGeneric(ArrayList<genericTemplate> list){
-
-        list = mergeSortGenericAuxillary(list,0,list.size()-1);
-
-        return list;
     }
 
 }

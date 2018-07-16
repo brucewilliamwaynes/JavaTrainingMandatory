@@ -107,6 +107,7 @@ public class TestGeneric {
 
             System.out.println("Binary Searching took " + (testGenericObj.stopTime - testGenericObj.startTime) + "Milliseconds!");
         }
+        /*
         System.out.println("Do you want to Run Merge Sort!");
         choice = inputScannerObj.inputBoolean();
 
@@ -121,15 +122,12 @@ public class TestGeneric {
                 wordsList.add(i, inputScannerObj.inputString());
             }
 
-
-            wordsList = GenericTemplateClass.mergeSortGenericAuxillary(wordsList,0,wordsList.size()-1);
+            GenericTemplateClass genericTemplateClassObj = new GenericTemplateClass();
+            genericTemplateClassObj.mergeSortGenericAuxillary(wordsList,0,wordsList.size()-1);
 
             System.out.println(wordsList.size());
 
-            for (String element : wordsList)
-                System.out.println(element);
-
         }
-
+        */
     }
 }

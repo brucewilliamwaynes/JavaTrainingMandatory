@@ -59,7 +59,7 @@ public class InputScanner extends  GenericTemplateClass{
 
     public static String readInputFromFile()throws FileNotFoundException{
         InputScanner inputScannerObj = new InputScanner();
-        System.out.println("Enter destination of input file!");
+        System.out.println("Enter source of input file!");
         String inputDestination = inputScannerObj.inputString();
 
         File inputFile = new File(inputDestination);
@@ -69,6 +69,31 @@ public class InputScanner extends  GenericTemplateClass{
         inputFileToString = inputFileToString.replace("\n","").replace("\r","");
         return inputFileToString;
     }
+
+    public static void writeInputToFileFromList(UnorderedList<String> list) throws FileNotFoundException,IOException{
+        InputScanner inputScannerObj = new InputScanner();
+        System.out.println("Enter destination for output file!");
+        String inputDestination = inputScannerObj.inputString();
+
+        FileWriter outputFile = new FileWriter(inputDestination,true);
+        for(int i=0;i<list.lengthOfList();i++){
+            outputFile.write(list.getElementAtIndex(i) + "\n");
+        }
+        outputFile.close();
+    }
+
+    public static void writeInputToFileFromList(OrderedList<Integer> list) throws FileNotFoundException,IOException{
+        InputScanner inputScannerObj = new InputScanner();
+        System.out.println("Enter destination for output file!");
+        String inputDestination = inputScannerObj.inputString();
+
+        FileWriter outputFile = new FileWriter(inputDestination,true);
+        for(int i=0;i<list.lengthOfList();i++){
+            outputFile.write(list.getElementAtIndex(i) + "\n");
+        }
+        outputFile.close();
+    }
+
 
     public String inputString(){
         String temp = sc.next();

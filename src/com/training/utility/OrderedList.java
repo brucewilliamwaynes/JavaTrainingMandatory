@@ -1,13 +1,50 @@
 package com.training.utility;
 
-public class UnorderedList<T extends Comparable<? super T>> {
-
+public class OrderedList<T extends Comparable<? super  T>> {
     private Node<T> headList;
     private Node<T> endList;
 
-    public UnorderedList(){
+    public OrderedList(){
         this.headList = null;
         this.endList = null;
+    }
+
+    public void insertNode(T item){
+        if(headList == null){
+            headList = new Node<T>(item);
+            headList.next = null;
+            endList = headList;
+        }
+        else{
+            Node<T> currentNode = headList;
+            Node<T> tempNode = null;
+            while(currentNode.next != null){
+                if(currentNode.data.compareTo(item) > 0)
+                    break;
+                tempNode = currentNode;
+                currentNode = currentNode.next;
+            }
+            if(currentNode == headList){
+                tempNode = new Node<T>(item);
+                tempNode.next = headList;
+                headList = tempNode;
+            }
+            else if (currentNode.next == null){
+                if(currentNode.data.compareTo(item) > 0){
+                    tempNode.next = new Node<T>(item);
+                    tempNode.next.next = currentNode;
+                }
+                else {
+                    currentNode.next = new Node<T>(item);
+                    currentNode.next.next = null;
+                    endList = currentNode.next;
+                }
+            }
+            else {
+                tempNode.next = new Node<T>(item);
+                tempNode.next.next = currentNode;
+            }
+        }
     }
 
     public boolean isEmpty(){
@@ -26,32 +63,24 @@ public class UnorderedList<T extends Comparable<? super T>> {
         return size;
     }
 
-    public void insertNode(T item){
-//        Node<T> currentNode = headList;
-        if(headList == null){
-            headList = new Node<T>(item);
-            endList = headList;
-        }
-        else{
-            endList.next = new Node<T>(item);
-            endList = endList.next;
-        }
-    }
-
-    public void removeNodeAtIndex(int index){
+    private void removeNode(T item){
         Node<T> currentNode = headList;
-        Node<T> tempNode = currentNode;
-        int currentIndex = 0;
-        while(currentNode != null && currentIndex < index){
+        Node<T> tempNode = null;
+        while(currentNode.next != null){
+            if(currentNode.data.compareTo(item) == 0)
+                break;
             tempNode = currentNode;
             currentNode = currentNode.next;
-            currentIndex++;
         }
-        if(currentNode != null) {
-            tempNode.next = currentNode.next;
+        if(headList == currentNode){
+            headList = headList.next;
+        }
+        else if(currentNode == endList){
+            endList = tempNode;
+            endList.next = null;
         }
         else{
-            System.out.println("Cannot find the index !");
+            tempNode.next = currentNode.next;
         }
     }
 
@@ -99,49 +128,10 @@ public class UnorderedList<T extends Comparable<? super T>> {
         }
     }
 
-    public void insertAtIndex(int index,T item){
-        Node<T> currentNode = headList;
-        Node<T> tempNode = currentNode;
-        int currentIndex = 0;
-        while(currentNode != null && currentIndex < index){
-            tempNode = currentNode;
-            currentNode = currentNode.next;
-            currentIndex++;
-        }
-        if(currentNode != null) {
-            tempNode.next = new Node<T>(item);
-            tempNode.next.next = currentNode;
-        }
-        else{
-            System.out.println("Cannot find the index , adding at the last!");
-            endList.next = new Node<T>(item);
-            endList =  endList.next;
-        }
-    }
-
-    public void replaceElementAtIndex(int index,T item){
-        Node currentNode = headList;
-        Node tempNode = currentNode;
-        int currentIndex = 0;
-        while(currentNode != null && currentIndex < index){
-            tempNode = currentNode;
-            currentNode = currentNode.next;
-            currentIndex++;
-        }
-        if(currentNode != null) {
-            currentNode.data = item;
-        }
-        else{
-            System.out.println("Cannot find the index to be replaced! , adding at the last!");
-            endList.next = new Node<T>(item);
-            endList =  endList.next;
-        }
-    }
-
     public void removemNodeElement(T item){
         int index = returnIndexOfItem(item);
         if(index > -1)
-            removeNodeAtIndex(index);
+            removeNode(item);
         else
             System.out.println("Element Cannot Be Found!");
     }
@@ -160,5 +150,19 @@ public class UnorderedList<T extends Comparable<? super T>> {
         }
         tempList.insertNode(word.substring(0,word.length()-1));
         return tempList;
+    }
+
+    public static OrderedList segregateNumbersIntoList(String inputString){
+        OrderedList<Integer> list = new OrderedList<Integer>();
+        UnorderedList<String> tempList = new UnorderedList<String>();
+        tempList = segregateWordsIntoList(inputString);
+//        tempList.displayList();
+//        System.out.println("Without Insertion!");
+        for(int i = 0 ; i < tempList.lengthOfList();i++){
+            list.insertNode(Integer.parseInt(tempList.getElementAtIndex(i)));
+//            list.displayList();
+//            System.out.println("After Round :" + i);
+        }
+        return list;
     }
 }
