@@ -1,14 +1,14 @@
 package com.training.utility;
 
-public class Stack<T> {
+public class StackCustom<T> {
     private Node<T> start;
     private Node<T> top;
-    public Stack(){
+    public StackCustom(){
         this.start = null;
         this.top = null;
     }
 
-    public void push(T item){
+    public void pushCustomStack(T item){
         if(this.start == null){
             this.start = new Node<T>(item);
             this.start.next = null;
@@ -21,27 +21,27 @@ public class Stack<T> {
         }
     }
 
-    public boolean isEmpty(){
+    public boolean isEmptyCustomStack(){
         if(this.top != null)
             return false;
         return true;
     }
 
-    public void pop(){
+    public void popCustomStack(){
         if(this.top == null){
             this.start = null;
             this.top = null;
-            System.out.println("Cannot Pop Empty Stack!");
+            System.out.println("Cannot Pop Empty StackCustom!");
         }
         else {
-            top = top.next;
+            this.top = this.top.next;
         }
     }
 
-    public T peak(){
+    public T peakCustomStack(){
         if(this.top == null){
             this.start = null;
-            System.out.println("Peak A Boo , Stack is not foo(l)!");
+            System.out.println("Peak A Boo , StackCustom is not foo(l)!");
         }
         else{
             return (this.top.data);
@@ -49,8 +49,8 @@ public class Stack<T> {
         return null;
     }
 
-    public int size(){
-        Node<T> currentNode = top;
+    public int sizeCustomStack(){
+        Node<T> currentNode = this.top;
         int length = 0;
         while(currentNode != null){
             length++;
@@ -58,5 +58,4 @@ public class Stack<T> {
         }
         return length;
     }
-
 }

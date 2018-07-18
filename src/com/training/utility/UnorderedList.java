@@ -11,13 +11,13 @@ public class UnorderedList<T extends Comparable<? super T>> {
     }
 
     public boolean isEmpty(){
-        if(endList != null)
+        if(this.endList != null)
             return false;
         return true;
     }
 
     public int lengthOfList(){
-        Node currentNode = headList;
+        Node currentNode = this.headList;
         int size = 0;
         while (currentNode!=null){
             size++;
@@ -27,19 +27,19 @@ public class UnorderedList<T extends Comparable<? super T>> {
     }
 
     public void insertNode(T item){
-//        Node<T> currentNode = headList;
-        if(headList == null){
-            headList = new Node<T>(item);
-            endList = headList;
+//        Node<T> currentNode = this.headList;
+        if(this.headList == null){
+            this.headList = new Node<T>(item);
+            this.endList = this.headList;
         }
         else{
-            endList.next = new Node<T>(item);
-            endList = endList.next;
+            this.endList.next = new Node<T>(item);
+            this.endList = this.endList.next;
         }
     }
 
     public void removeNodeAtIndex(int index){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         Node<T> tempNode = currentNode;
         int currentIndex = 0;
         while(currentNode != null && currentIndex < index){
@@ -57,7 +57,7 @@ public class UnorderedList<T extends Comparable<? super T>> {
 
     public T getElementAtIndex(int index){
         int currentIndex = 0;
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         if(index < lengthOfList() && index > -1){
             while(currentIndex<index){
                 currentIndex++;
@@ -69,7 +69,7 @@ public class UnorderedList<T extends Comparable<? super T>> {
     }
 
     public boolean searchNode(T item){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         while (currentNode != null){
             if(item.compareTo(currentNode.data) == 0)
                 return true;
@@ -79,7 +79,7 @@ public class UnorderedList<T extends Comparable<? super T>> {
     }
 
     public int returnIndexOfItem(T item){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         int currentIndex = 0;
         while (currentNode != null){
             if(item.compareTo(currentNode.data) == 0){
@@ -92,7 +92,7 @@ public class UnorderedList<T extends Comparable<? super T>> {
     }
 
     public void displayList(){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         while(currentNode != null){
             System.out.println(currentNode.data);
             currentNode = currentNode.next;
@@ -100,7 +100,7 @@ public class UnorderedList<T extends Comparable<? super T>> {
     }
 
     public void insertAtIndex(int index,T item){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         Node<T> tempNode = currentNode;
         int currentIndex = 0;
         while(currentNode != null && currentIndex < index){
@@ -114,13 +114,13 @@ public class UnorderedList<T extends Comparable<? super T>> {
         }
         else{
             System.out.println("Cannot find the index , adding at the last!");
-            endList.next = new Node<T>(item);
-            endList =  endList.next;
+            this.endList.next = new Node<T>(item);
+            this.endList =  this.endList.next;
         }
     }
 
     public void replaceElementAtIndex(int index,T item){
-        Node currentNode = headList;
+        Node currentNode = this.headList;
         Node tempNode = currentNode;
         int currentIndex = 0;
         while(currentNode != null && currentIndex < index){
@@ -133,8 +133,8 @@ public class UnorderedList<T extends Comparable<? super T>> {
         }
         else{
             System.out.println("Cannot find the index to be replaced! , adding at the last!");
-            endList.next = new Node<T>(item);
-            endList =  endList.next;
+            this.endList.next = new Node<T>(item);
+            this.endList =  this.endList.next;
         }
     }
 
@@ -168,10 +168,10 @@ public class UnorderedList<T extends Comparable<? super T>> {
         Node<T> next;
         Node<T> outerLoop;
         Node<T> endPoint;
-        outerLoop = headList;
+        outerLoop = this.headList;
         endPoint = null;
         while(outerLoop!=null){
-            current = headList;
+            current = this.headList;
             prev = current;
             next = current.next;
             System.out.println(current.data);

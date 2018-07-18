@@ -1,7 +1,7 @@
 package com.training.dataStructurePrograms;
 
 import com.training.utility.InputScanner;
-import com.training.utility.Stack;
+import com.training.utility.StackCustom;
 
 public class BalancedExpression {
     private String inputExpression;
@@ -11,17 +11,17 @@ public class BalancedExpression {
 
     public static boolean isBalancedExpression(String inputExpression){
 
-        Stack<String> myStack = new Stack<String>();
+        StackCustom<String> myStackCustom = new StackCustom<String>();
 
         for(int i=0;i<inputExpression.length();i++){
             if(inputExpression.charAt(i) == '('){
-                myStack.push("(");
+                myStackCustom.pushCustomStack("(");
             }
             else if(inputExpression.charAt(i) == ')'){
-                myStack.pop();
+                myStackCustom.popCustomStack();
             }
         }
-        if(myStack.isEmpty()){
+        if(myStackCustom.isEmptyCustomStack()){
             return true;
         }
         return false;

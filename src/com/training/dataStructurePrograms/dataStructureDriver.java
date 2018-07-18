@@ -17,10 +17,12 @@ public class dataStructureDriver {
         SearchUsingOrderedList searchUsingOrderedListObj = new SearchUsingOrderedList();
         searchUsingOrderedListObj.displaySearchedNumber();
         */
-
+        /*
         BalancedExpression balancedExpressionObj = new BalancedExpression();
         balancedExpressionObj.isBalancedExpressionChecker();
-
+        */
+        PalindromeChecker palindromeCheckerObj = new PalindromeChecker();
+        palindromeCheckerObj.pallindromeValidator();
     }
 
 }
