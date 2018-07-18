@@ -7,7 +7,7 @@ public class BankQueue {
     private double totalCashBalance;
 
     BankQueue(){
-        this.totalCashBalance = 0.0;
+        this.totalCashBalance = 1000.0;
     }
 
     public void addMoney(QueueCustom<Double> queueOfAmount){
@@ -39,8 +39,20 @@ public class BankQueue {
         }
     }
 
-    public void findBalance(QueueCustom<Double> queueOfAmount){
-
+    public void performTransaction(QueueCustom<Double> queueOfAmount){
+        if(this.totalCashBalance == 0){
+            System.out.println("Cannot Perform Transaction!");
+        }
+        else{
+            double transactionAmount = queueOfAmount.deQueueCustom();
+            if(transactionAmount + this.totalCashBalance > 0){
+                this.totalCashBalance += transactionAmount;
+                System.out.println("Transaction Successful! Balance Remaining! " + this.totalCashBalance);
+            }
+            else{
+                System.out.println("Transaction Cannot be Performed! Available Balance! " + this.totalCashBalance);
+            }
+        }
     }
 
     public void simulateBankQueue(){
@@ -56,10 +68,11 @@ public class BankQueue {
                 bankQueueObj.addPerson(queueOfAmount);
             }
             else if(inputStop.compareTo("T") == 0){
-//                bankQueueObj.performTransaction();
+                bankQueueObj.performTransaction(queueOfAmount);
             }
             else
-                break;
+                System.out.println("Are you want to terminate transaction ? Enter correctly or Press E to exit!");
         }while (inputStop.compareTo("E") != 0);
+        System.out.println("Total Balance Available !" + this.totalCashBalance);
     }
 }

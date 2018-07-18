@@ -21,8 +21,12 @@ public class dataStructureDriver {
         BalancedExpression balancedExpressionObj = new BalancedExpression();
         balancedExpressionObj.isBalancedExpressionChecker();
         */
+        BankQueue bankQueueObj = new BankQueue();
+        bankQueueObj.simulateBankQueue();
+        /*
         PalindromeChecker palindromeCheckerObj = new PalindromeChecker();
         palindromeCheckerObj.pallindromeValidator();
+        */
     }
 
 }
