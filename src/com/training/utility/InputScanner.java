@@ -96,7 +96,7 @@ public class InputScanner extends  GenericTemplateClass{
 
 
     public String inputString(){
-        String temp = sc.next();
+        String temp = sc.nextLine();
         InputScanner inputScannerObj = new InputScanner(temp);
         return inputScannerObj.inputString;
     }

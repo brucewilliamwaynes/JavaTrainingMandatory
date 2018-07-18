@@ -162,7 +162,7 @@ public class UnorderedList<T extends Comparable<? super T>> {
         return tempList;
     }
 
-    public void bubbleSortForUndorderedList(){
+    public void bubbleSortForUnorderedList(){
         Node<T> prev;
         Node<T> current;
         Node<T> next;
@@ -174,8 +174,11 @@ public class UnorderedList<T extends Comparable<? super T>> {
             current = headList;
             prev = current;
             next = current.next;
+            System.out.println(current.data);
+            /*
             while (current!= endPoint){
                 if(current.data.compareTo(next.data) > 0){
+                    System.out.println("Two swapped numbers are :" + current.data + " and " + next.data);
                     prev.next = next;
                     current.next = next.next;
                     next.next = current;
@@ -184,8 +187,11 @@ public class UnorderedList<T extends Comparable<? super T>> {
                 current = current.next;
                 next = next.next;
             }
+            */
             endPoint = prev;
             outerLoop = outerLoop.next;
+            System.out.println("The last element is :" + endPoint.data);
+            System.out.println("The round was for :" + outerLoop.data);
         }
     }
 }
