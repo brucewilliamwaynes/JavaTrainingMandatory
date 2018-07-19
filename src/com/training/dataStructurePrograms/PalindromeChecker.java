@@ -24,7 +24,7 @@ public class PalindromeChecker {
         }
     }
 
-    public void pallindromeValidator(){
+    public void palindromeValidator(){
         InputScanner inputScannerObj  = new InputScanner();
         PalindromeChecker palindromeCheckerObj = new PalindromeChecker();
         System.out.println("Enter a string to check for Palindrome!");

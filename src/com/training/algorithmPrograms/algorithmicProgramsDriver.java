@@ -21,10 +21,10 @@ public class algorithmicProgramsDriver {
         */
 
 //        NthNumberFinder.findNthNumber();
-
+        /*
             SearchWordFromFile searchWordFromFileObj = new SearchWordFromFile();
             searchWordFromFileObj.searchWord();
-
+        */
         /*
         CurrencyDispenser currencyDispenserObj = new CurrencyDispenser();
         currencyDispenserObj.displayDispensedCurrency();
@@ -41,7 +41,7 @@ public class algorithmicProgramsDriver {
         MonthlyPaymentAux monthlyPaymentAuxObj = new MonthlyPaymentAux();
         monthlyPaymentAuxObj.calculateMonthlyPayment();
         */
-//        System.out.println(CommonAlgorithms.sqrt(9));
+//        System.out.println(CommonAlgorithms.sqrt(10));
 
 //        System.out.println(CommonAlgorithms.toBinary(106));
         /*

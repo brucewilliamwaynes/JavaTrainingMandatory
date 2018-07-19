@@ -10,13 +10,13 @@ public class OrderedList<T extends Comparable<? super  T>> {
     }
 
     public void insertNode(T item){
-        if(headList == null){
-            headList = new Node<T>(item);
-            headList.next = null;
-            endList = headList;
+        if(this.headList == null){
+            this.headList = new Node<T>(item);
+            this.headList.next = null;
+            this.endList = this.headList;
         }
         else{
-            Node<T> currentNode = headList;
+            Node<T> currentNode = this.headList;
             Node<T> tempNode = null;
             while(currentNode.next != null){
                 if(currentNode.data.compareTo(item) > 0)
@@ -24,10 +24,10 @@ public class OrderedList<T extends Comparable<? super  T>> {
                 tempNode = currentNode;
                 currentNode = currentNode.next;
             }
-            if(currentNode == headList){
+            if(currentNode == this.headList){
                 tempNode = new Node<T>(item);
-                tempNode.next = headList;
-                headList = tempNode;
+                tempNode.next = this.headList;
+                this.headList = tempNode;
             }
             else if (currentNode.next == null){
                 if(currentNode.data.compareTo(item) > 0){
@@ -37,7 +37,7 @@ public class OrderedList<T extends Comparable<? super  T>> {
                 else {
                     currentNode.next = new Node<T>(item);
                     currentNode.next.next = null;
-                    endList = currentNode.next;
+                    this.endList = currentNode.next;
                 }
             }
             else {
@@ -48,13 +48,13 @@ public class OrderedList<T extends Comparable<? super  T>> {
     }
 
     public boolean isEmpty(){
-        if(endList != null)
+        if(this.endList != null)
             return false;
         return true;
     }
 
     public int lengthOfList(){
-        Node currentNode = headList;
+        Node currentNode = this.headList;
         int size = 0;
         while (currentNode!=null){
             size++;
@@ -64,7 +64,7 @@ public class OrderedList<T extends Comparable<? super  T>> {
     }
 
     private void removeNode(T item){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         Node<T> tempNode = null;
         while(currentNode.next != null){
             if(currentNode.data.compareTo(item) == 0)
@@ -72,12 +72,12 @@ public class OrderedList<T extends Comparable<? super  T>> {
             tempNode = currentNode;
             currentNode = currentNode.next;
         }
-        if(headList == currentNode){
-            headList = headList.next;
+        if(this.headList == currentNode){
+            this.headList = this.headList.next;
         }
-        else if(currentNode == endList){
-            endList = tempNode;
-            endList.next = null;
+        else if(currentNode == this.endList){
+            this.endList = tempNode;
+            this.endList.next = null;
         }
         else{
             tempNode.next = currentNode.next;
@@ -86,7 +86,7 @@ public class OrderedList<T extends Comparable<? super  T>> {
 
     public T getElementAtIndex(int index){
         int currentIndex = 0;
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         if(index < lengthOfList() && index > -1){
             while(currentIndex<index){
                 currentIndex++;
@@ -98,7 +98,7 @@ public class OrderedList<T extends Comparable<? super  T>> {
     }
 
     public boolean searchNode(T item){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         while (currentNode != null){
             if(item.compareTo(currentNode.data) == 0)
                 return true;
@@ -108,7 +108,7 @@ public class OrderedList<T extends Comparable<? super  T>> {
     }
 
     public int returnIndexOfItem(T item){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         int currentIndex = 0;
         while (currentNode != null){
             if(item.compareTo(currentNode.data) == 0){
@@ -121,7 +121,7 @@ public class OrderedList<T extends Comparable<? super  T>> {
     }
 
     public void displayList(){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         while(currentNode != null){
             System.out.println(currentNode.data);
             currentNode = currentNode.next;
@@ -167,14 +167,14 @@ public class OrderedList<T extends Comparable<? super  T>> {
     }
 
     public void popList(){
-        Node<T> currentNode = headList;
+        Node<T> currentNode = this.headList;
         Node<T> tempNode = null;
         while(currentNode.next != null){
             tempNode = currentNode;
             currentNode = currentNode.next;
         }
-        endList = tempNode;
-        endList.next = null;
+        this.endList = tempNode;
+        this.endList.next = null;
     }
 
 }

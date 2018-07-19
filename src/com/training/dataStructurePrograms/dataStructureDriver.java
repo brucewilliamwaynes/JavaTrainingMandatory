@@ -1,10 +1,9 @@
 package com.training.dataStructurePrograms;
 
+import com.training.utility.UnorderedMapCustom;
 import com.training.utility.InputScanner;
-import com.training.utility.UnorderedList;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class dataStructureDriver {
     public static void main(String args[]) throws IOException{
@@ -21,12 +20,24 @@ public class dataStructureDriver {
         BalancedExpression balancedExpressionObj = new BalancedExpression();
         balancedExpressionObj.isBalancedExpressionChecker();
         */
+        /*
         BankQueue bankQueueObj = new BankQueue();
         bankQueueObj.simulateBankQueue();
+        */
         /*
         PalindromeChecker palindromeCheckerObj = new PalindromeChecker();
-        palindromeCheckerObj.pallindromeValidator();
+        palindromeCheckerObj.palindromeValidator();
         */
+        InputScanner inputScannerObj = new InputScanner();
+        System.out.println("Enter number of elements of Map!");
+        int n = inputScannerObj.inputInteger();
+        UnorderedMapCustom<Integer,Integer> myHashMap = new UnorderedMapCustom<Integer, Integer>();
+        for(int i=0;i<n;i++){
+            System.out.println("Enter a number to  insert!");
+            int number = inputScannerObj.inputInteger();
+            myHashMap.addElementToHashMap((number%11),number);
+        }
+        myHashMap.displayHashedMap();
     }
 
 }
