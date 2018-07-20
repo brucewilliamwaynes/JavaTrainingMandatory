@@ -1,4 +1,5 @@
 package com.training.utility;
+
 import java.io.*;
 import java.io.IOException;
 import java.util.*;
@@ -94,6 +95,19 @@ public class InputScanner extends  GenericTemplateClass{
         outputFile.close();
     }
 
+    public static void writeInputToFile(OrderedMapCustom<Integer,Integer> map) throws FileNotFoundException,IOException {
+        InputScanner inputScannerObj = new InputScanner();
+        System.out.println("Enter destination for output file!");
+        String inputDestination = inputScannerObj.inputString();
+        FileWriter outputFile = new FileWriter(inputDestination,true);
+
+        MapElement<Integer,Integer> currentMapElement = map.head;
+        while(currentMapElement != null){
+            outputFile.write("The Key is :" + currentMapElement.key + " and the list of numbers in it!" + currentMapElement.chainList.displayListInString() + "\n");
+            currentMapElement = currentMapElement.next;
+        }
+        outputFile.close();
+    }
 
     public String inputString(){
         String temp = sc.nextLine();

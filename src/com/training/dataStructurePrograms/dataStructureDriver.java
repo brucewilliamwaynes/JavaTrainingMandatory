@@ -1,8 +1,5 @@
 package com.training.dataStructurePrograms;
 
-import com.training.utility.UnorderedMapCustom;
-import com.training.utility.InputScanner;
-
 import java.io.IOException;
 
 public class dataStructureDriver {
@@ -28,16 +25,19 @@ public class dataStructureDriver {
         PalindromeChecker palindromeCheckerObj = new PalindromeChecker();
         palindromeCheckerObj.palindromeValidator();
         */
+        /*
         InputScanner inputScannerObj = new InputScanner();
         System.out.println("Enter number of elements of Map!");
         int n = inputScannerObj.inputInteger();
-        UnorderedMapCustom<Integer,Integer> myHashMap = new UnorderedMapCustom<Integer, Integer>();
+        OrderedMapCustom<Integer,Integer> myHashMap = new OrderedMapCustom<Integer, Integer>();
         for(int i=0;i<n;i++){
             System.out.println("Enter a number to  insert!");
             int number = inputScannerObj.inputInteger();
             myHashMap.addElementToHashMap((number%11),number);
         }
         myHashMap.displayHashedMap();
+        */
+        NumberInASlot numberInASlotObj = new NumberInASlot();
+        numberInASlotObj.findKeyOfNumber();
     }
-
 }

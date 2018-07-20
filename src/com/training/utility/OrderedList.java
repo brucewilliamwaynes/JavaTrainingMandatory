@@ -128,6 +128,16 @@ public class OrderedList<T extends Comparable<? super  T>> {
         }
     }
 
+    public String displayListInString(){
+        Node<T> currentNode = this.headList;
+        String finalString = "";
+        while(currentNode != null){
+            finalString += currentNode.data + " ";
+            currentNode = currentNode.next;
+        }
+        return finalString;
+    }
+
     public void removemNodeElement(T item){
         int index = returnIndexOfItem(item);
         if(index > -1)
