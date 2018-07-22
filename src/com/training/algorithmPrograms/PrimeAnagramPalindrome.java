@@ -35,7 +35,7 @@ public class PrimeAnagramPalindrome {
                 myHashMap.put(String.valueOf(i), "1" );
 
                 for( HashMap.Entry<String, String> nextElement : myHashMap.entrySet()){
-                    if(CommonAlgorithms.isAnagramForInteger(nextElement.getKey(),String.valueOf(i)))
+                    if(CommonAlgorithms.isAnagramForInteger(Integer.parseInt(nextElement.getKey()),i))
                         System.out.println(i + " " + nextElement.getKey());
                 }
             }

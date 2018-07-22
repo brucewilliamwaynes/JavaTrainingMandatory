@@ -37,7 +37,12 @@ public class dataStructureDriver {
         }
         myHashMap.displayHashedMap();
         */
+        /*
         NumberInASlot numberInASlotObj = new NumberInASlot();
         numberInASlotObj.findKeyOfNumber();
+        */
+        PrimeNumberInRange primeNumberInRangeObj = new PrimeNumberInRange();
+        primeNumberInRangeObj.printPrimeNumbersInRange();
+
     }
 }

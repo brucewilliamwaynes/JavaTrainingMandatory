@@ -48,4 +48,10 @@ public class QueueCustom<T> {
         return length;
     }
 
+    public void displayQueue(){
+        while (!this.isEmptyQueueCustom()){
+            System.out.println(this.deQueueCustom());
+        }
+    }
+
 }

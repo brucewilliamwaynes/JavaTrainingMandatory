@@ -11,6 +11,19 @@ public class CheckLeapYear {
         this.yearInput = "";
     }
 
+    public static boolean leapYearValidator(String inputYear){
+        int yearInput = Integer.parseInt(inputYear);
+        if(yearInput % 4 == 0) {
+            if (yearInput % 100 == 0) {
+                if (yearInput % 400 == 0)
+                    return true;
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
     public void checkLeapYear() {
         InputScanner inputScannerObj = new InputScanner();
         CheckLeapYear checkLeapYearObj = new CheckLeapYear();
@@ -19,12 +32,13 @@ public class CheckLeapYear {
             checkLeapYearObj.yearInput = inputScannerObj.inputString();
         }while(checkLeapYearObj.yearInput.length() < 4 || checkLeapYearObj.yearInput.length() > 4);
 
-        int yearInteger = Integer.parseInt(checkLeapYearObj.yearInput);
-
-        if(yearInteger%4==0)
+        if(checkLeapYearObj.leapYearValidator(checkLeapYearObj.yearInput))
+        {
             System.out.println("Leap year.");
-        else
+        }
+        else {
             System.out.println("Not a Leap Year.");
+        }
     }
 
 }

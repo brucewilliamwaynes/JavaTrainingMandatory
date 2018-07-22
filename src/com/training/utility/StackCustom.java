@@ -58,4 +58,12 @@ public class StackCustom<T> {
         }
         return length;
     }
+
+    public void displayStack(){
+        while(!this.isEmptyCustomStack()){
+            System.out.println(this.peakCustomStack());
+            this.popCustomStack();
+        }
+    }
+
 }

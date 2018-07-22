@@ -48,8 +48,8 @@ public class CommonAlgorithms {
         return false;
     }
 
-    public static boolean isAnagramForInteger(String numberOne , String numberTwo){
-        return (isAnagram(numberOne,numberTwo,1));
+    public static boolean isAnagramForInteger(Integer numberOne , Integer numberTwo){
+        return (isAnagram(String.valueOf(numberOne),String.valueOf(numberTwo),1));
     }
 
     public static boolean isPallindromeForString(String text){
@@ -81,7 +81,7 @@ public class CommonAlgorithms {
         if(number == 1 || number == 0)
             return false;
         else{
-            for(int i = 2; i < (int)(Math.sqrt(number)); i++){
+            for(int i = 2; i <= (int)(Math.sqrt(number)); i++){
                 if(number % i == 0)
                     return false;
             }
@@ -214,7 +214,7 @@ public class CommonAlgorithms {
         return list;
     }
 
-    public static boolean dateValidator(String inputString)throws ParseException{
+    public static boolean dateValidator(String inputString){
         if(inputString.trim().equals("")){
             return false;
         }

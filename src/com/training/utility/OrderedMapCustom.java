@@ -9,6 +9,10 @@ public class OrderedMapCustom<T extends Comparable<? super T>,E extends Comparab
         this.end = null;
     }
 
+    public MapElement<T, E> getHead() {
+        return this.head;
+    }
+
     public boolean doesKeyExist(T itemKey){
         MapElement<T,E> current = this.head;
         while(current != null){
@@ -52,9 +56,17 @@ public class OrderedMapCustom<T extends Comparable<? super T>,E extends Comparab
                     currentMapElement = currentMapElement.next;
                 }
                 if(currentMapElement == this.head){
-                    tempNode = new MapElement<T, E>(itemKey,itemValue);
-                    tempNode.next = this.head;
-                    this.head = tempNode;
+                    if(currentMapElement.key.compareTo(itemKey) > 0){
+                        tempNode = new MapElement<T, E>(itemKey,itemValue);
+                        tempNode.next = this.head.next;
+                        this.head.next = tempNode;
+                    }
+                    else {
+                        tempNode = new MapElement<T, E>(itemKey, itemValue);
+                        tempNode.next = this.head;
+                        this.head = tempNode;
+
+                    }
                 }
                 else if (currentMapElement.next == null){
                     if(currentMapElement.key.compareTo(itemKey) > 0){
@@ -105,7 +117,7 @@ public class OrderedMapCustom<T extends Comparable<? super T>,E extends Comparab
     public void displayHashedMap(){
         MapElement<T,E> currentElement = this.head;
         while(currentElement != null){
-            System.out.println("The Key is :" + currentElement.key);
+            System.out.println("The Key is : " + currentElement.key);
             System.out.println("The Values Associated Or Hashed are as follows:");
             currentElement.chainList.displayList();
             currentElement = currentElement.next;
