@@ -15,103 +15,79 @@ Creating a JSON of Inventory including attributes as name / weight / $ per kg fo
 public class CreateInventory {
 
     private JSONObject inventoryObj;
-    private JSONArray riceArray;
-    private JSONArray wheatArray;
-    private JSONArray pulseArray;
-    private String categoryValue;
 
     CreateInventory(){
         this.inventoryObj = new JSONObject();
-        this.riceArray = new JSONArray();
-        this.wheatArray = new JSONArray();
-        this.pulseArray = new JSONArray();
-        this.categoryValue = "Rice,Wheat,Pulse";
     }
 
-    private void initializeRiceInventory(){
-        /*
-//        Using Custom Map to work with Inventory
-        OrderedMapCustom<String,String> myCustomMap = new OrderedMapCustom<String, String>();
-        InputScanner.getInventoryDetails(myCustomMap);
-        riceObj.put("Rice",myCustomMap);
-        */
+    public void addToJSONArray(String categoryName,JSONArray categoryArray){
         Map myMap = new LinkedHashMap(3);
         InputScanner.getInventoryDetails(myMap);
-        this.riceArray.add(myMap);
+        categoryArray.add(myMap);
+        this.inventoryObj.put(categoryName, categoryArray);
     }
 
-
-    private void initializeWheatInventory(){
+    public void addToJSONObject(String categoryName){
         Map myMap = new LinkedHashMap(3);
         InputScanner.getInventoryDetails(myMap);
-        this.wheatArray.add(myMap);
+        this.inventoryObj.put(categoryName,myMap);
     }
 
-
-    private void initializePulseInventory(){
-        Map myMap = new LinkedHashMap(3);
-        InputScanner.getInventoryDetails(myMap);
-        this.pulseArray.add(myMap);
-    }
-
-    public void initializeInventory(int choice){
-        InputScanner inputScannerObj = new InputScanner();
-        String s = inputScannerObj.inputString();
-        switch (choice){
-            case 1:initializeRiceInventory();
-                    this.inventoryObj.put(s,this.riceArray);
-                    break;
-            case 2:initializeWheatInventory();
-                this.inventoryObj.put("Wheat",this.wheatArray);
-                break;
-            case 3:initializePulseInventory();
-                this.inventoryObj.put("Pulse",this.pulseArray);
-                break;
+    public void initializeInventory(String categoryName){
+        if(this.inventoryObj.containsKey(categoryName)){
+            if(this.inventoryObj.get(categoryName).getClass().getName().compareTo("org.json.simple.JSONArray") == 0) {
+                JSONArray categoryArray = (JSONArray) this.inventoryObj.get(categoryName);
+                this.addToJSONArray(categoryName,categoryArray);
+            }
+            else{
+                this.addToJSONObject(categoryName);
+            }
+        }
+        else{
+            InputScanner inputScannerObj = new InputScanner();
+            System.out.println("Does the category contains variety!");
+            boolean variety = inputScannerObj.inputBoolean();
+            if(variety){
+                JSONArray categoryArray = new JSONArray();
+                this.addToJSONArray(categoryName,categoryArray);
+            }
+            else{
+                this.addToJSONObject(categoryName);
+            }
         }
     }
 
-    public boolean isItemPresentInInventory(String itemName,JSONArray itemArray){
-        Iterator itemIterator = itemArray.iterator();
-        Iterator<Map.Entry> mapIterator;
-        while(itemIterator.hasNext()){
-            mapIterator = ((Map)itemIterator.next()).entrySet().iterator();
-            while (mapIterator.hasNext()){
-                Map.Entry pair = mapIterator.next();
-                if(String.valueOf(pair.getKey()).compareTo("name") == 0 && String.valueOf(pair.getValue()).compareTo(itemName) == 0)
-                    return true;
+    public boolean isItemPresentInInventory(String itemName, String categoryName){
+        JSONArray categoryArray = (JSONArray)this.inventoryObj.get(categoryName);
+        for(int i=0;i<categoryArray.size();i++){
+            JSONObject itemList = (JSONObject) categoryArray.get(i);
+            if(itemList.get("name").equals(itemName)){
+                return true;
             }
         }
         return false;
     }
 
-    public double calculateValueOfItem(String itemName,JSONArray itemArray){
-        double value = 0.0;
-        Iterator itemIterator = itemArray.iterator();
-        Iterator<Map.Entry> mapIterator;
-        while(itemIterator.hasNext()) {
-            mapIterator = ((Map) itemIterator.next()).entrySet().iterator();
-            while (mapIterator.hasNext()) {
-                Map.Entry pair = mapIterator.next();
-                if (String.valueOf(pair.getKey()).compareTo("name") == 0 && String.valueOf(pair.getValue()).compareTo(itemName) == 0) {
-                    Map.Entry weightItem = mapIterator.next();
-                    Map.Entry valueItem = mapIterator.next();
-                    value = Double.valueOf(String.valueOf(weightItem.getValue())) * Double.valueOf(String.valueOf(valueItem.getValue()));
-                    break;
-                }
+    public double calculateValueOfItem(String itemName,String categoryName){
+        JSONArray categoryArray = (JSONArray) this.inventoryObj.get(categoryName);
+        for(int i=0;i<categoryArray.size();i++){
+            JSONObject itemList = (JSONObject) categoryArray.get(i);
+            if(itemList.get("name").equals(itemName)){
+                return Double.valueOf(String.valueOf(itemList.get("weight"))) * Double.valueOf(String.valueOf(itemList.get("value")));
             }
         }
-        return value;
+        return 0.0;
     }
 
-    public void processItemOfCategory(JSONArray categoryItemArray){
+    public void processItemOfCategory(String categoryName){
         InputScanner inputScannerObj = new InputScanner();
         System.out.println("Enter item to calculate Value!");
         String itemName = inputScannerObj.inputString();
-        if(isItemPresentInInventory(itemName,categoryItemArray)){
-            System.out.println(calculateValueOfItem(itemName,categoryItemArray));
+        if(isItemPresentInInventory(itemName,categoryName)){
+            System.out.println(calculateValueOfItem(itemName,categoryName));
         }
         else{
-            System.out.println("Oops! Item cannot be found!");
+            System.out.println("Opps! Item Missing!");
         }
     }
 
@@ -131,20 +107,21 @@ public class CreateInventory {
                 String fileDestination = InputScanner.createJSON(createInventoryObj.inventoryObj);
             }
             else if(choice.compareTo("3") == 0) {
-                do {
-                    System.out.println("Enter 1 to initialize details for Rice, 2 for Wheat, 3 for Pulses !");
-                    type = inputScannerObj.inputString();
-                } while (type.compareTo("1") < 0 || type.compareTo("3") > 0);
-                createInventoryObj.initializeInventory(Integer.valueOf(type));
+                System.out.println("Enter category name!");
+                type = inputScannerObj.inputString();
+                createInventoryObj.initializeInventory(type);
             }
             else if(choice.compareTo("4") == 0){
                 String categoryName;
                 do {
-                    System.out.println("Enter category of inventory to calculate value!" + createInventoryObj.categoryValue);
+                    System.out.println("Enter category of inventory to calculate value!");
                     categoryName = inputScannerObj.inputString();
                 }while(!createInventoryObj.inventoryObj.containsKey(categoryName));
+                createInventoryObj.processItemOfCategory(categoryName);
+                /*
                 JSONArray categoryItemArray = (JSONArray) createInventoryObj.inventoryObj.get(categoryName);
                 createInventoryObj.processItemOfCategory(categoryItemArray);
+                */
             }
             else
                 break;

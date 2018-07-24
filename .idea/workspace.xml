@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1632c6b9-45e5-49f6-a634-999eb30dcf3f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/com/training/objectOrientedProgramming/oOPSDriver.java" afterPath="$PROJECT_DIR$/src/com/training/objectOrientedProgramming/oOPSDriver.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/training/utility/InputScanner.java" afterPath="$PROJECT_DIR$/src/com/training/utility/InputScanner.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/training/objectOrientedProgramming/CreateInventory.java" afterPath="$PROJECT_DIR$/src/com/training/objectOrientedProgramming/CreateInventory.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,10 +36,12 @@
       <file leaf-file-name="CreateInventory.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/training/objectOrientedProgramming/CreateInventory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="133" column="16" lean-forward="true" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
+            <state relative-caret-position="1360">
+              <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#496#497#0" expanded="true" />
+                <element signature="e#548#549#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -845,12 +846,12 @@
         <state relative-caret-position="306">
           <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#300#318#0" expanded="true" />
-            <element signature="e#473#491#0" expanded="true" />
-            <element signature="e#1369#1378#0" expanded="true" />
-            <element signature="e#1925#1934#0" expanded="true" />
-            <element signature="e#2454#2472#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#300#318#0" expanded="false" />
+            <element signature="e#473#491#0" expanded="false" />
+            <element signature="e#1369#1378#0" expanded="false" />
+            <element signature="e#1925#1934#0" expanded="false" />
+            <element signature="e#2454#2472#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -884,9 +885,9 @@
         <state relative-caret-position="358">
           <caret line="59" column="29" lean-forward="false" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#292#293#0" expanded="true" />
-            <element signature="e#329#330#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#292#293#0" expanded="false" />
+            <element signature="e#329#330#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -932,10 +933,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/training/objectOrientedProgramming/CreateInventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="133" column="16" lean-forward="true" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
+        <state relative-caret-position="1360">
+          <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
           </folding>
         </state>
       </provider>
