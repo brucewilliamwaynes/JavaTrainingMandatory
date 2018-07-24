@@ -1,7 +1,11 @@
 package com.training.utility;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import java.awt.*;
 import java.io.*;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 /*Utility Class Created To use it for Complete Package*/
 public class InputScanner extends  GenericTemplateClass{
@@ -170,6 +174,50 @@ public class InputScanner extends  GenericTemplateClass{
     return (dateObj.getTime());
     }
 
+    public static void getInventoryDetails(OrderedMapCustom<String,String> myMap){
+        InputScanner inputScannerObj = new InputScanner();
+        System.out.println("Enter name!");
+        String name = inputScannerObj.inputString();
+        String weight = inputScannerObj.inputString();
+        String price = inputScannerObj.inputString();
+        myMap.addElementToHashMap("name",name);
+        myMap.addElementToHashMap("weight",weight);
+        myMap.addElementToHashMap("price",price);
+    }
 
+    public static void getInventoryDetails(Map myMap){
+        InputScanner inputScannerObj = new InputScanner();
+        System.out.println("Enter name!");
+        String name = inputScannerObj.inputString();
+        System.out.println("Enter weight!");
+        String weight = inputScannerObj.inputString();
+        System.out.println("Enter price!");
+        String price = inputScannerObj.inputString();
+        myMap.put("name",name);
+        myMap.put("weight",weight);
+        myMap.put("price",price);
+    }
 
+    public static String createJSON(JSONObject jsonObj){
+        InputScanner inputScannerObj = new InputScanner();
+        System.out.println("Enter destination for output file!");
+        String inputDestination = inputScannerObj.inputString();
+        try {
+            PrintWriter outputFile = new PrintWriter(inputDestination);
+            outputFile.write(jsonObj.toJSONString());
+            outputFile.flush();
+            outputFile.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return inputDestination;
+    }
+
+    public static void writeJSONToFile(String inputDestination)throws Exception {
+
+        Object fileObj = new JSONParser().parse(new FileReader(inputDestination));
+        JSONObject jsonObj = (JSONObject) fileObj;
+
+    }
 }
