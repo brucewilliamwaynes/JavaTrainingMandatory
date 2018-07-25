@@ -80,7 +80,6 @@ public class CreateInventory{
     
 
     public boolean isItemPresentInInventory(String itemName, String categoryName){
-<<<<<<< HEAD
         if(this.inventoryObj.get(categoryName).getClass().getName().compareTo("org.json.simple.JSONArray") == 0) {
             JSONArray categoryArray = (JSONArray) this.inventoryObj.get(categoryName);
             for (int i = 0; i < categoryArray.size(); i++) {
@@ -89,33 +88,17 @@ public class CreateInventory{
                     return true;
                 }
             }
-=======
-        if(this.inventoryObj.get(categoryName).getClass().getName().compareTo("org.json.simple.JSONArray") == 0){
-	    	JSONArray categoryArray = (JSONArray)this.inventoryObj.get(categoryName);
-	        for(int i=0;i<categoryArray.size();i++){
-	            JSONObject itemList = (JSONObject) categoryArray.get(i);
-	            if(itemList.get("name").equals(itemName)){
-	                return true;
-	            }
-	        }
         }
         else{
         	Map itemList = (Map) this.inventoryObj.get(categoryName);
         	if(itemList.get("name").equals(itemName)){
         		return true;
         	}
->>>>>>> 1dd442f5aa357491f30c0301b67c6bfbb2f68c2e
-        }
-        else{
-            JSONObject itemList = (JSONObject) this.inventoryObj.get(categoryName);
-            if(itemList.get("name").equals(itemName))
-                return true;
         }
         return false;
     }
 
     public double calculateValueOfItem(String itemName,String categoryName){
-<<<<<<< HEAD
         if(this.inventoryObj.get(categoryName).getClass().getName().compareTo("org.json.simple.JSONArray") == 0) {
             JSONArray categoryArray = (JSONArray) this.inventoryObj.get(categoryName);
             for (int i = 0; i < categoryArray.size(); i++) {
@@ -131,7 +114,6 @@ public class CreateInventory{
                 return Double.valueOf(String.valueOf(itemList.get("weight"))) * Double.valueOf(String.valueOf(itemList.get("value")));
             }
         }
-=======
     	if(this.inventoryObj.get(categoryName).getClass().getName().compareTo("org.json.simple.JSONArray") == 0){
 	        JSONArray categoryArray = (JSONArray) this.inventoryObj.get(categoryName);
 	        for(int i=0;i<categoryArray.size();i++){
@@ -147,7 +129,6 @@ public class CreateInventory{
     				return Double.valueOf(String.valueOf(itemList.get("weight"))) * Double.valueOf(String.valueOf(itemList.get("price")));
     			}
     	}
->>>>>>> 1dd442f5aa357491f30c0301b67c6bfbb2f68c2e
         return 0.0;
     }
 
@@ -175,7 +156,7 @@ public class CreateInventory{
     	}
     }
 
-    public void workingWithInventory() throws Exception{
+    public void workingWithInventory()throws Exception{
         InputScanner inputScannerObj = new InputScanner();
         CreateInventory createInventoryObj = new CreateInventory();
         String choice;
@@ -185,8 +166,7 @@ public class CreateInventory{
             choice = inputScannerObj.inputString();
             if(choice.compareTo("1") == 0){
                 //Read from JSON
-            	JSONObject readFileObj = InputScanner.readJSONFromFile();
-            	createInventoryObj.inventoryObj = readFileObj;
+            	createInventoryObj.inventoryObj = InputScanner.readJSONFromFile();
             }
             else if(choice.compareTo("2") == 0){
                 //Write to File in JSON format
