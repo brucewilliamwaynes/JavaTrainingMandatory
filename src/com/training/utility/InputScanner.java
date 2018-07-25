@@ -214,10 +214,12 @@ public class InputScanner extends  GenericTemplateClass{
         return inputDestination;
     }
 
-    public static void writeJSONToFile(String inputDestination)throws Exception {
-
+    public static JSONObject readJSONFromFile()throws Exception {
+    	InputScanner inputScannerObj = new InputScanner();
+    	System.out.println("Enter destination of input file!");
+    	String inputDestination = inputScannerObj.inputString();
         Object fileObj = new JSONParser().parse(new FileReader(inputDestination));
         JSONObject jsonObj = (JSONObject) fileObj;
-
+        return jsonObj;
     }
 }

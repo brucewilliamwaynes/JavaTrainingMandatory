@@ -1,0 +1,24 @@
+{
+	"wheat":{
+		"price":"2.5",
+		"name":"w1",
+		"weight":"2"
+	},
+	"rice":[
+		{
+			"price":"4.5",
+			"name":"r1",
+			"weight":"4"
+		},
+		{
+			"price":"6.5",
+			"name":"r4",
+			"weight":"3"
+		},
+		{
+			"name":"r3",
+			"weight":"4",
+			"price":"9.5"
+			}
+		]
+}
