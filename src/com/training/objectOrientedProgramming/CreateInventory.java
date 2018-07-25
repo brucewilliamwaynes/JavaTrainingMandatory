@@ -58,20 +58,35 @@ public class CreateInventory {
     }
 
     public boolean isItemPresentInInventory(String itemName, String categoryName){
-        JSONArray categoryArray = (JSONArray)this.inventoryObj.get(categoryName);
-        for(int i=0;i<categoryArray.size();i++){
-            JSONObject itemList = (JSONObject) categoryArray.get(i);
-            if(itemList.get("name").equals(itemName)){
-                return true;
+        if(this.inventoryObj.get(categoryName).getClass().getName().compareTo("org.json.simple.JSONArray") == 0) {
+            JSONArray categoryArray = (JSONArray) this.inventoryObj.get(categoryName);
+            for (int i = 0; i < categoryArray.size(); i++) {
+                JSONObject itemList = (JSONObject) categoryArray.get(i);
+                if (itemList.get("name").equals(itemName)) {
+                    return true;
+                }
             }
+        }
+        else{
+            JSONObject itemList = (JSONObject) this.inventoryObj.get(categoryName);
+            if(itemList.get("name").equals(itemName))
+                return true;
         }
         return false;
     }
 
     public double calculateValueOfItem(String itemName,String categoryName){
-        JSONArray categoryArray = (JSONArray) this.inventoryObj.get(categoryName);
-        for(int i=0;i<categoryArray.size();i++){
-            JSONObject itemList = (JSONObject) categoryArray.get(i);
+        if(this.inventoryObj.get(categoryName).getClass().getName().compareTo("org.json.simple.JSONArray") == 0) {
+            JSONArray categoryArray = (JSONArray) this.inventoryObj.get(categoryName);
+            for (int i = 0; i < categoryArray.size(); i++) {
+                JSONObject itemList = (JSONObject) categoryArray.get(i);
+                if (itemList.get("name").equals(itemName)) {
+                    return Double.valueOf(String.valueOf(itemList.get("weight"))) * Double.valueOf(String.valueOf(itemList.get("value")));
+                }
+            }
+        }
+        else{
+            JSONObject itemList = (JSONObject) this.inventoryObj.get(categoryName);
             if(itemList.get("name").equals(itemName)){
                 return Double.valueOf(String.valueOf(itemList.get("weight"))) * Double.valueOf(String.valueOf(itemList.get("value")));
             }
