@@ -76,6 +76,24 @@ public class InputScanner extends  GenericTemplateClass{
         inputFileToString = inputFileToString.replace("\n","").replace("\r","");
         return inputFileToString;
     }
+    
+    public  static <T> void writeInputToFileFromArray(ArrayList<T> list){
+    	InputScanner inputScannerObj = new InputScanner();
+    	System.out.println("Enter Destination for output file");
+    	String inputDestination = inputScannerObj.inputString();
+    	
+    	try {
+			FileWriter outputFile = new FileWriter(inputDestination,true);
+			for(int i=0;i<list.size();i++){
+				outputFile.write(list.get(i).toString());
+			}
+			outputFile.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
 
     public static void writeInputToFileFromList(UnorderedList<String> list) throws FileNotFoundException,IOException{
         InputScanner inputScannerObj = new InputScanner();

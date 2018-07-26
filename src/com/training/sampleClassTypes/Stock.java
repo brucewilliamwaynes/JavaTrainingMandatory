@@ -11,6 +11,7 @@ public class Stock {
 		private  String stockName;
 		private  int numberOfShares;
 		private  double eachSharePrice;
+		private double valuationEachStock;
 		/*
 		 * Initialize instance variables when called
 		 */
@@ -18,7 +19,8 @@ public class Stock {
 		public Stock(){
 			this.stockName = "";
 			this.numberOfShares = 0;
-			this.eachSharePrice = 0.0;			
+			this.eachSharePrice = 0.0;		
+			this.setValuationEachStock(0.0);
 		}
 		
 		/**
@@ -56,5 +58,19 @@ public class Stock {
 		 */
 		public  void setEachSharePrice(double eachSharePrice) {
 			this.eachSharePrice = eachSharePrice;
+		}
+
+		/**
+		 * @return the valuationEachStock
+		 */
+		public double getValuationEachStock() {
+			return valuationEachStock;
+		}
+
+		/**
+		 * @param valuationEachStock the valuationEachStock to set
+		 */
+		public void setValuationEachStock(double valuationEachStock) {
+			this.valuationEachStock = valuationEachStock;
 		}
 }

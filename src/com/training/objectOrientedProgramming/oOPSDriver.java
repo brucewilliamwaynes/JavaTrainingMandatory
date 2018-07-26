@@ -8,7 +8,9 @@ public class oOPSDriver {
     	CreateInventory createInventoryObj = new CreateInventory();
         createInventoryObj.workingWithInventory();
         */
-    	RegexUsageDemonstration.regexDemo();
+    	
+//    	RegexUsageDemonstration.regexDemo();
+    	StockPortfolio.workWithStock();
     }
     public static void main(String args[]) throws Exception{
         new oOPSDriver();

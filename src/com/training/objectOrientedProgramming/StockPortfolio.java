@@ -11,7 +11,6 @@ import com.training.utility.InputScanner;
  *
  */
 public class StockPortfolio {
-	private static ArrayList<Double> valuationList;
 	public static void workWithStock(){
 		InputScanner inputScannerObj = new InputScanner();
 		
@@ -21,19 +20,21 @@ public class StockPortfolio {
 		numberOfStock = inputScannerObj.inputInteger();
 		
 		ArrayList<Stock> stockList = new ArrayList<Stock>(numberOfStock);
-		valuationList = new ArrayList<Double>(numberOfStock);
 		
 		fillUpStockList(inputScannerObj,stockList,numberOfStock);
 		calcValueEachStock(stockList);
-		double totalCost  = calcValueTotalStock();
+		double totalCost  = calcValueTotalStock(stockList);
+		
+		InputScanner.writeInputToFileFromArray(stockList);
+		System.out.println("Total Valuation :" + totalCost);
 	}
 
 
-	private static double calcValueTotalStock() {
+	private static double calcValueTotalStock(ArrayList<Stock> stockList) {
 		// TODO Auto-generated method stub
 		double totalValuation = 0.0;
-		for(int i=0;i<valuationList.size();i++){
-			totalValuation += valuationList.get(i);
+		for(int i=0;i<stockList.size();i++){
+			totalValuation += stockList.get(i).getValuationEachStock();
 		}
 		return totalValuation;
 	}
@@ -42,7 +43,7 @@ public class StockPortfolio {
 	private static void calcValueEachStock(ArrayList<Stock> stockList) {
 		// TODO Auto-generated method stub
 		for(int i=0;i<stockList.size();i++){
-			valuationList.add(i, (stockList.get(i).getNumberOfShares() * stockList.get(i).getEachSharePrice()));
+			stockList.get(i).setValuationEachStock(stockList.get(i).getNumberOfShares() * stockList.get(i).getEachSharePrice());
 		}
 	}
 
