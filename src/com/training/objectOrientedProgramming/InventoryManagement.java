@@ -3,26 +3,26 @@
  */
 package com.training.objectOrientedProgramming;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONObject;
+
+import com.training.sampleClassTypes.Inventory;
+import com.training.utility.InputScanner;
 
 /**
  * @author brucewilliamwaynes
  *
  */
 public class InventoryManagement {
-	public void manageInventory(){
-		try {
-			ArrayList<CreateInventory> inventoryObjects = (ArrayList<CreateInventory>) InventoryFactory.createInventoryObjects();
-			inventoryObjects.get(0).workingWithInventory();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
+	
+	
 	public static void main(String args[])throws Exception{
-		InventoryManagement inventoryManagementObj = new InventoryManagement();
-		inventoryManagementObj.manageInventory();
+		JSONObject fileJSONObj = InputScanner.readJSONFromFile();
+		ArrayList<ArrayList<Inventory>> inventoryObjectList = new ArrayList<ArrayList<Inventory>>();
+		inventoryObjectList = InventoryFactory.buildInventoryList(fileJSONObj);
+		
 	}
 }
