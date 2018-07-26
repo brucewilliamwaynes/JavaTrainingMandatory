@@ -1,17 +1,14 @@
 package com.training.objectOrientedProgramming;
 
+import com.training.objectOrientedProgramming.RegexUsageDemonstration;;
+
 public class oOPSDriver {
     oOPSDriver() throws Exception{
-<<<<<<< HEAD
-
-        CreateInventory createInventoryObj = new CreateInventory();
+        /*
+    	CreateInventory createInventoryObj = new CreateInventory();
         createInventoryObj.workingWithInventory();
-=======
-    	
-        CreateInventory createInventoryObj = new CreateInventory();
-        createInventoryObj.workingWithInventory();
-    
->>>>>>> ac459371e28a80825825ab26f8160e22056cd1d7
+        */
+    	RegexUsageDemonstration.regexDemo();
     }
     public static void main(String args[]) throws Exception{
         new oOPSDriver();

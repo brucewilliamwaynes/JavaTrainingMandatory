@@ -7,6 +7,8 @@ import java.io.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /*Utility Class Created To use it for Complete Package*/
 public class InputScanner extends  GenericTemplateClass{
 
@@ -222,4 +224,13 @@ public class InputScanner extends  GenericTemplateClass{
         JSONObject jsonObj = (JSONObject) fileObj;
         return jsonObj;
     }
+    
+    //reaplceWithStringUsingRegex --> inputString : replaceWithString : pattern OR WordToReplace // returns  modified string
+    public static String replaceStringUsingRegex(String inputString,String replaceWithString,String patternToReplace){
+    	Pattern patternReplace = Pattern.compile(patternToReplace);
+    	Matcher matchInput = patternReplace.matcher(inputString);
+    	inputString = matchInput.replaceAll(replaceWithString);
+    	return inputString;
+    }
+    
 }
