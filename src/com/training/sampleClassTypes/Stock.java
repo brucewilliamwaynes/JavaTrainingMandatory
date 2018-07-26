@@ -73,4 +73,8 @@ public class Stock {
 		public void setValuationEachStock(double valuationEachStock) {
 			this.valuationEachStock = valuationEachStock;
 		}
+		
+		public String getDetails(){
+			return (this.stockName + " with " + this.numberOfShares + " shares, is of  worth " + this.eachSharePrice + " each.");
+		}
 }

@@ -2,6 +2,9 @@ package com.training.utility;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+
+import com.training.sampleClassTypes.Stock;
+
 import java.awt.*;
 import java.io.*;
 import java.io.IOException;
@@ -77,22 +80,15 @@ public class InputScanner extends  GenericTemplateClass{
         return inputFileToString;
     }
     
-    public  static <T> void writeInputToFileFromArray(ArrayList<T> list){
+    public  static  void writeInputToFileFromArray(ArrayList<Stock> list) throws IOException{
     	InputScanner inputScannerObj = new InputScanner();
     	System.out.println("Enter Destination for output file");
     	String inputDestination = inputScannerObj.inputString();
-    	
-    	try {
-			FileWriter outputFile = new FileWriter(inputDestination,true);
-			for(int i=0;i<list.size();i++){
-				outputFile.write(list.get(i).toString());
+    	FileWriter outputFile = new FileWriter(inputDestination,true);
+		for(int i=0;i<list.size();i++){
+				outputFile.write(list.get(i).getDetails());
 			}
 			outputFile.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
     }
 
     public static void writeInputToFileFromList(UnorderedList<String> list) throws FileNotFoundException,IOException{

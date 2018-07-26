@@ -2,6 +2,7 @@
  * 
  */
 package com.training.objectOrientedProgramming;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.training.sampleClassTypes.Stock;
@@ -11,7 +12,7 @@ import com.training.utility.InputScanner;
  *
  */
 public class StockPortfolio {
-	public static void workWithStock(){
+	public static void workWithStock() throws IOException{
 		InputScanner inputScannerObj = new InputScanner();
 		
 		int numberOfStock;
@@ -26,6 +27,7 @@ public class StockPortfolio {
 		double totalCost  = calcValueTotalStock(stockList);
 		
 		InputScanner.writeInputToFileFromArray(stockList);
+		
 		System.out.println("Total Valuation :" + totalCost);
 	}
 
@@ -51,14 +53,23 @@ public class StockPortfolio {
 	private static void fillUpStockList(InputScanner inputScannerObj,ArrayList<Stock> stockList, int numberOfStock) {
 		// TODO Auto-generated method stub
 		System.out.println("Create Stock Details!");
-		Stock element = new Stock();
+		String stockName;
+		int numberOfShares;
+		double sharePrice;
+		
 		for(int i=0;i<numberOfStock;i++){
+			Stock element = new Stock();
+			inputScannerObj = new InputScanner();
 			System.out.println("Enter stock name!");
-			element.setStockName(inputScannerObj.inputString());
+			stockName = inputScannerObj.inputString();
+			System.out.println(stockName);
 			System.out.println("Enter number of shares!");
-			element.setNumberOfShares(inputScannerObj.inputInteger());
+			numberOfShares = inputScannerObj.inputInteger();
 			System.out.println("Enter share price!");
-			element.setEachSharePrice(inputScannerObj.inputDouble());
+			sharePrice = inputScannerObj.inputDouble();
+			element.setStockName(stockName);
+			element.setNumberOfShares(numberOfShares);
+			element.setEachSharePrice(sharePrice);
 			stockList.add(i, element);
 		}
 	}
