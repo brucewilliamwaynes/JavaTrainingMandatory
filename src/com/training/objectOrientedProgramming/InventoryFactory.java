@@ -25,7 +25,8 @@ public class InventoryFactory {
 			 * If JSONArray then create an array containing all the Inventory Object for each of variety 
 			 */
 			ArrayList<Inventory> jsonArrayList;
-			if(fileJSONObj.get(key).getClass().getName().compareTo("org.json.simple.JSONArray") == 0){
+			//if(fileJSONObj.get(key).getClass().getName().compareTo("org.json.simple.JSONArray") == 0){
+				if(fileJSONObj.get(key) instanceof JSONArray){
 //				System.out.println("Array and Variety!");	
 				JSONArray categoryArray =  (JSONArray)fileJSONObj.get(key);
 				/*
@@ -79,3 +80,71 @@ public class InventoryFactory {
 		return inventoryObjectList;
 	}
 }
+	/*
+	
+	-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	*/
+	/*
+	public static ArrayList<Inventory> buildInventoryItemList(JSONObject fileJSONObj) {
+		// TODO Auto-generated method stub
+//		1DArrayList holding Inventory objects for particular item
+		/*
+		 *items of same category but different variety are stored in the second dimension , say rice having variety "basmati" and "brown rice" (JSONArray input type)  
+		 *and items having just one variety , stored as 1 element in second dimension , say wheat (JSONObject)
+		 
+		ArrayList<Inventory> inventoryObjectList = new ArrayList<Inventory>();
+ 		/*
+ 		 * Iterating through each object within fileObject to check whether it is a JSONArray or JSONObject
+ 		 
+		for(Object key : fileJSONObj.keySet()){
+			/*
+			 * If JSONArray then create an array containing all the Inventory Object for each of variety 
+			 
+			if(fileJSONObj.get(key).getClass().getName().compareTo("org.json.simple.JSONArray") == 0){
+//				System.out.println("Array and Variety!");	
+				JSONArray categoryArray =  (JSONArray)fileJSONObj.get(key);
+				/*
+				 * Iterating through JSONArray to be able to Map from JSONArray to ArrayList<Inventory> 
+				 
+				for(int i=0;i<categoryArray.size();i++){
+						Inventory element = new Inventory();
+						JSONObject itemList = (JSONObject) categoryArray.get(i);
+						/*
+						  Mapping JSONObject to Inventory Object
+						 
+						element.setName((String) itemList.get("name"));
+						element.setrate((double) itemList.get("price"));
+						element.setWeight((double) itemList.get("weight"));
+						/*
+						 * Adding mapped One element to Inventory ArrayList
+						 
+						inventoryObjectList.add(element);
+					}
+			}
+			else{
+//				System.out.println("Object no variety!");
+				/*
+				 * Creating Inventory Element and adding it as onto second dimension as one object only
+				 
+				Inventory element = new Inventory();
+				/*
+				 * Mapping between JSONObject and Inventory Object
+				 
+				JSONObject itemList = (JSONObject)fileJSONObj.get(key);
+				
+				element.setName((String)itemList.get("name"));
+				element.setrate((double)itemList.get("price"));
+				element.setWeight((double) itemList.get("weight"));
+				/*
+				 * Adding mapped Inventory Element to List
+				 
+				inventoryObjectList.add(element);
+			}
+			/*
+				 * Adding the ArrayList<Inventory> to the main list of inventory objects!
+			
+			
+		}
+		return inventoryObjectList;
+	}
+*/

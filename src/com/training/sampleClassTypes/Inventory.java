@@ -3,6 +3,7 @@
  */
 package com.training.sampleClassTypes;
 
+
 /**
  * @author bridgelabz
  *
@@ -60,5 +61,5 @@ public class Inventory {
 	public void setInventoryPrice(double inventoryPrice) {
 		this.inventoryPrice = inventoryPrice;
 	}
-	
+
 }
