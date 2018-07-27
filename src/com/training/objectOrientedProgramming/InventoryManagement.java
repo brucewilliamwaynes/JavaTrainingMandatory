@@ -35,7 +35,7 @@ public class InventoryManagement {
 	
 	public static double calculatePriceOfItem(ArrayList<ArrayList<Inventory>> inventoryList, String item){
 		
-		for(int i=0;i<inventoryList.size();i++){
+		for(int i = 0 ; i < inventoryList.size() ; i++){
 			/*
 			 * Going into the different types if available!
 			 */
@@ -70,14 +70,6 @@ public class InventoryManagement {
 		return null;
 	}
 	
-	public static void addInventory(ArrayList<ArrayList<Inventory>> inventoryObjectList, String item){
-		ArrayList<Inventory> itemList = searchInventoryForItem(inventoryObjectList,item);
-//		Inventory element 
-		if(itemList != null){
-		
-		}
-	}
-	
 	
 	public static void main(String args[])throws Exception{
 		JSONObject fileJSONObj = InputScanner.readJSONFromFile();
@@ -87,5 +79,9 @@ public class InventoryManagement {
 		ArrayList<Inventory> inventoryItemList = new ArrayList<Inventory>();
 		inventoryItemList = InventoryFactory.buildInventoryItemList(fileJSONObj);
 		*/
+		InputScanner inputScannerObj = new InputScanner();
+		System.out.println("Enter item to calculate value:!");
+		String searchKey = inputScannerObj.inputString();
+		System.out.println("The price of " +  searchKey + " is " + calculatePriceOfItem(inventoryObjectList,searchKey));
 	}
 }
