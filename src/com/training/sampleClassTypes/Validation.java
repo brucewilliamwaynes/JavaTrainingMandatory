@@ -11,24 +11,36 @@ import org.json.simple.JSONObject;
  *
  */
 public class Validation {
-	public static boolean isUserACustomer(JSONObject fileJSONObject,String userName){
-		if(fileJSONObject.containsKey(userName))
+	
+	private  static JSONObject validateInJSONFile(JSONObject fileJSONObj, String searchKey, String searchValue){
+		for(Object key : fileJSONObj.keySet()){
+			JSONObject element = (JSONObject)fileJSONObj.get(key);
+			if(element.get(searchKey).equals(searchValue))
+				return element;
+		}
+		return null;
+	}
+	
+	
+	public static boolean isUserACustomer(JSONObject customerJSON, String userName){
+		if(validateInJSONFile(customerJSON,"Name",userName) != null)
 			return true;
 		return false;
 	}
 	
-	public static boolean isAccountNumberCorrect(JSONObject fileJSONObject,int accNumber ){
-		for(Object key : fileJSONObject.keySet()){
-			JSONObject itemObject = (JSONObject)fileJSONObject.get(key);
-			if(itemObject.get("AccNumber").equals(String.valueOf(accNumber)))
-					return true;
-		}
-		return false;
-	}
-	public static boolean doesStockExist(JSONObject fileJSONObject,String stockName){
-		JSONArray stockList = (JSONArray)fileJSONObject.get("StockList");
-		if(stockList.contains(stockName))
+	public static boolean isPhoneNumberCorrect(JSONObject customerJSON, String phoneNumber ){
+		if(validateInJSONFile(customerJSON,"PhoneNumber",phoneNumber) != null)
 			return true;
 		return false;
 	}
+	public static boolean doesStockExist(JSONObject shareJSON, String stockName){
+		if(validateInJSONFile ( shareJSON, "CompanyName", stockName) != null)
+			return true;
+		return false;
+	}
+	/*
+	public static Customer searchCustomer(JSONObject customerJSON,String userName){
+		return validateInJSONFile(customerJSON,"Name",userName);
+	}
+	*/
 }
