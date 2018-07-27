@@ -60,6 +60,19 @@ public class InventoryManagement {
 		return 0.0;
 	}
 	
+	public static double calculateTotalInventoryPrice(ArrayList<ArrayList<Inventory>> inventoryObjectList){
+		double totalInventoryPrice = 0.0;
+		ArrayList<Inventory> itemList = new ArrayList<Inventory>();
+		for(int i=0;i<inventoryObjectList.size();i++){
+			itemList = inventoryObjectList.get(i);
+			for(Inventory element : itemList){
+				element.setInventoryPrice(element.getrate() * element.getWeight());
+				totalInventoryPrice += element.getInventoryPrice();
+			}
+		}
+		return totalInventoryPrice;
+	}
+	
 	public static ArrayList<Inventory> searchInventoryForItem(ArrayList<ArrayList<Inventory>> inventoryObjectList,String item){
 		ArrayList<Inventory> itemList;
 		for(int i=0;i<inventoryObjectList.size();i++){
@@ -83,5 +96,8 @@ public class InventoryManagement {
 		System.out.println("Enter item to calculate value:!");
 		String searchKey = inputScannerObj.inputString();
 		System.out.println("The price of " +  searchKey + " is " + calculatePriceOfItem(inventoryObjectList,searchKey));
+		double totalInventoryPrice = calculateTotalInventoryPrice(inventoryObjectList);
+		fileJSONObj.put("TotalInventoryPrice",String.valueOf( totalInventoryPrice));
+		InputScanner.createJSON(fileJSONObj);
 	}
 }
