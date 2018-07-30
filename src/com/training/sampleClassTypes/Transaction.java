@@ -3,6 +3,9 @@
  */
 package com.training.sampleClassTypes;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.json.simple.JSONObject;
 
 import com.training.utility.InputScanner;
@@ -14,8 +17,70 @@ import com.training.utility.InputScanner;
 public class Transaction {
 
 	private static JSONObject transactionDetailsJSON;
+	private String customerName;
+	private String stockName;
+	private int numberOfShares;
+	private String dateOfTransaction;
 	
+	/**
+	 * @return the customerName
+	 */
+	public String getCustomerName() {
+		return this.customerName;
+	}
 	
+	/**
+	 * @param customerName the customerName to set
+	 */
+	public void setCustomerName(Customer customerNew) {
+		this.customerName = customerNew.getName();
+	}
+
+	/**
+	 * @return the stockName
+	 */
+	public String getStockName() {
+		return this.stockName;
+	}
+
+	/**
+	 * @param stockName the stockName to set
+	 */
+	public void setStockName(Stock stockElement) {
+		this.stockName = stockElement.getStockName();
+	}
+
+	/**
+	 * @return the numberOfShares
+	 */
+	public int getNumberOfShares() {
+		return this.numberOfShares;
+	}
+
+	/**
+	 * @param numberOfShares the numberOfShares to set
+	 */
+	public void setNumberOfShares(int numberOfShares) {
+		this.numberOfShares = numberOfShares;
+	}
+
+	/**
+	 * @return the dateOfTransaction
+	 */
+	public String getDateOfTransaction() {
+		return dateOfTransaction;
+	}
+
+	/**
+	 * @param dateOfTransaction the dateOfTransaction to set
+	 */
+	public void setDateOfTransaction() {
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+		this.dateOfTransaction = String.valueOf(sdf.format(date));
+	}
+
+
 	public static Stock processPurchase(Customer customerNew, Stock stockElement) {
 		// TODO Auto-generated method stub
 			InputScanner sc = new InputScanner();

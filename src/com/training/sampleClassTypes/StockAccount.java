@@ -19,11 +19,6 @@ public class StockAccount {
 	/**
 	 * @param args
 	 */
-	 
-	
-	public StockAccount() throws Exception{
-		
-	}
 	
 	public static void processCustomer(Customer customerNew){
 		
