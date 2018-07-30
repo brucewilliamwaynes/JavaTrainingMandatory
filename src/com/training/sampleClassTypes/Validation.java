@@ -3,6 +3,8 @@
  */
 package com.training.sampleClassTypes;
 
+import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -43,4 +45,31 @@ public class Validation {
 		return validateInJSONFile(customerJSON,"Name",userName);
 	}
 	*/
+	
+	public static boolean validateUserName(ArrayList<Customer> customerList,String name){
+		for(Customer customer : customerList){
+			if(customer.getName().compareTo(name) == 0)
+				return true;
+		}
+		return false;
+	}
+
+	public static boolean validatePhoneNumber(ArrayList<Customer> customerList,String phoneNumber){
+		for(Customer customer : customerList){
+			if(customer.getMobileNumber().compareTo(phoneNumber) == 0)
+				return true;
+		}
+		return false;
+	}
+	
+	public static Customer searchCustomer(ArrayList<Customer> customerList, String name,String phoneNumber) {
+		// TODO Auto-generated method stub
+		for(Customer customer : customerList){
+			if(customer.getName().compareTo(name) == 0 && customer.getMobileNumber().compareTo(phoneNumber) == 0)
+				return customer;
+		}
+		return null;
+	}
+	
+	
 }

@@ -25,11 +25,13 @@ public class Bank {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		JSONObject customerJSON = InputScanner.readJSONFromFile();
+//		JSONObject customerJSON = InputScanner.readJSONFromFile();
 		
 		InputScanner inputScannerObj = new InputScanner();
 		
 		ArrayList<Customer> customerList = new ArrayList<Customer>();
+		
+		Customer.updateListInitialize(customerList);
 		
 		System.out.println("Enter Customer Name and Account Number!");
 		String name = inputScannerObj.inputString();
@@ -37,8 +39,9 @@ public class Bank {
 		
 		Customer customerNew = null;
 		
-		if(!Validation.isUserACustomer(customerJSON, name) && !Validation.isPhoneNumberCorrect(customerJSON, phoneNumber)){
-			
+//		if(!Validation.isUserACustomer(customerJSON, name) && !Validation.isPhoneNumberCorrect(customerJSON, phoneNumber)){
+		if(!Validation.validateUserName(customerList, name) && !Validation.validatePhoneNumber(customerList, phoneNumber)){
+		
 			String balance;
 			
 			do{
@@ -51,7 +54,7 @@ public class Bank {
 			
 			customerNew = Customer.createNewUser(name,phoneNumber,balance);
 			
-			Customer.updateCustomerJSON(customerJSON,customerNew);
+			Customer.updateCustomerJSON(customerNew);
 			
 			Customer.addToCustomerList(customerList, customerNew);
 			
@@ -69,9 +72,18 @@ public class Bank {
 			
 			if(choice == "1"){
 				
-//				customerNew = Validation.searchCustomer(customerJSON, name);
+				customerNew = Validation.searchCustomer(customerList, name, phoneNumber);
 				
-//				StockAccount.processCustomer(customerNew);
+				if(customerNew == null){
+					System.out.println("Deatils searched are wrong, Please enter correct details!");
+					System.out.println("Enter Customer Name and Account Number!");
+					name = inputScannerObj.inputString();
+					phoneNumber = inputScannerObj.inputString();
+					continue;
+				}
+				
+				StockAccount.processCustomer(customerNew);
+				
 			}
 			else if(choice == "2"){
 				

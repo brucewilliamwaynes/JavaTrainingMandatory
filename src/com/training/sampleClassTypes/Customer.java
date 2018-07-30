@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import org.json.simple.JSONObject;
 
+import com.training.utility.InputScanner;
+
 /**
  * @author bridgelabz
  *
@@ -15,6 +17,7 @@ public class Customer {
 	private String name;
 	private double balanceAvailable;
 	private String mobileNumber;
+	private static JSONObject customerJSON;
 	/**
 	 * @return the name
 	 */
@@ -68,11 +71,27 @@ public class Customer {
 		customerList.add(customer);
 	}
 	
-	public static void updateCustomerJSON(JSONObject customerJSON, Customer customerNew) {
+	public static void updateCustomerJSON(Customer customerNew) {
 		// TODO Auto-generated method stub
-		customerJSON.put("PhoneNumerr", customerNew.getMobileNumber());
-		customerJSON.put("Balance", String.valueOf(customerNew.getBalanceAvailable()));
-		customerJSON.put("Name",customerNew.getName());
+		JSONObject customerObj =  new JSONObject();
+		customerObj.put("PhoneNumber", customerNew.getMobileNumber());
+		customerObj.put("Balance", String.valueOf(customerNew.getBalanceAvailable()));
+		customerObj.put("Name",customerNew.getName());
+		customerJSON.put("",customerObj);
 	}
 	
+	
+	public static void updateListInitialize(ArrayList<Customer> customerList) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("Enter Customer JSON file destination!");
+		customerJSON = InputScanner.readJSONFromFile();
+		for(Object key : customerJSON.keySet()){
+			JSONObject customer = (JSONObject)customerJSON.get(key);
+			Customer customerElement = new Customer();
+			customerElement.setName(String.valueOf(customer.get("Name")));
+			customerElement.setBalanceAvailable(Double.valueOf((String) customer.get("Balance")));
+			customerElement.setMobileNumber((String)customer.get("PhoneNumber"));
+			customerList.add(customerElement);
+		}
+	}
 }
