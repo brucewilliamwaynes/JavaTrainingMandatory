@@ -35,11 +35,27 @@ public class Validation {
 			return true;
 		return false;
 	}
-	public static boolean doesStockExist(JSONObject shareJSON, String stockName){
-		if(validateInJSONFile ( shareJSON, "CompanyName", stockName) != null)
-			return true;
+	
+	
+	
+	public static boolean doesStockExist(ArrayList<Stock> stockList,String stockName){
+		for(Stock stockElement : stockList){
+			if(stockElement.getStockName().compareTo(stockName) == 0)
+				return true;
+		}
 		return false;
 	}
+	
+	public static Stock searchStock(ArrayList<Stock> stockList, String stockName) {
+		// TODO Auto-generated method stub
+		for(Stock stockElement : stockList){
+			if(stockElement.getStockName().compareTo(stockName) == 0)
+				return stockElement;
+		}
+		return null;
+	}
+	
+	
 	/*
 	public static Customer searchCustomer(JSONObject customerJSON,String userName){
 		return validateInJSONFile(customerJSON,"Name",userName);

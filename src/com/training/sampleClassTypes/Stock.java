@@ -3,6 +3,12 @@
  */
 package com.training.sampleClassTypes;
 
+import java.util.ArrayList;
+
+import org.json.simple.JSONObject;
+
+import com.training.utility.InputScanner;
+
 /**
  * @author brucewilliamwaynes
  *
@@ -12,6 +18,7 @@ public class Stock {
 		private  int numberOfShares;
 		private  double eachSharePrice;
 		private double valuationEachStock;
+		private static JSONObject shareJSON;
 		/*
 		 * Initialize instance variables when called
 		 */
@@ -77,4 +84,18 @@ public class Stock {
 		public String getDetails(){
 			return (this.stockName + " with " + this.numberOfShares + " shares, is of  worth " + this.eachSharePrice + " each.");
 		}
+		
+		public static void updateListInitialize(ArrayList<Stock> stockList) throws Exception{
+			System.out.println("Enter Shares JSON file destination!");
+			shareJSON = InputScanner.readJSONFromFile();
+			for(Object key : shareJSON.keySet()){
+				JSONObject stockObj = (JSONObject)shareJSON.get(key);
+				Stock currentStock = new Stock();
+				currentStock.setStockName((String) stockObj.get("CompanyName"));
+				currentStock.setNumberOfShares((int) stockObj.get("NumberOfStock"));
+				currentStock.setEachSharePrice((double) stockObj.get("PricePerShare"));
+				stockList.add(currentStock);
+			}
+		}
+		
 }

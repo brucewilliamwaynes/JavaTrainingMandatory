@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import org.json.simple.JSONObject;
 
 import com.training.sampleClassTypes.Customer;
+import com.training.sampleClassTypes.Stock;
 import com.training.sampleClassTypes.StockAccount;
+import com.training.sampleClassTypes.Transaction;
 import com.training.sampleClassTypes.Validation;
 import com.training.utility.InputScanner;
 
@@ -22,6 +24,9 @@ public class Bank {
 	 * @param args
 	 * @throws Exception 
 	 */
+	private static ArrayList<Customer> customerList;
+	private static ArrayList<Stock> stockList;
+ 	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -29,9 +34,13 @@ public class Bank {
 		
 		InputScanner inputScannerObj = new InputScanner();
 		
-		ArrayList<Customer> customerList = new ArrayList<Customer>();
+		customerList = new ArrayList<Customer>();
+		stockList = new ArrayList<Stock>();
+		
 		
 		Customer.updateListInitialize(customerList);
+		Stock.updateListInitialize(stockList);
+		Transaction.loadTransactionJSON();
 		
 		System.out.println("Enter Customer Name and Account Number!");
 		String name = inputScannerObj.inputString();
@@ -97,4 +106,17 @@ public class Bank {
 		}while(!choice.equals("1") && !choice.equals("2") && !choice.equals("3"));
 	}
 
+	/**
+	 * @return the customerList
+	 */
+	public static ArrayList<Customer> getCustomerList() {
+		return customerList;
+	}
+
+	/**
+	 * @return the stockList
+	 */
+	public static ArrayList<Stock> getStockList() {
+		return stockList;
+	}
 }
