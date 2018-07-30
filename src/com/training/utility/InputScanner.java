@@ -165,8 +165,8 @@ public class InputScanner extends  GenericTemplateClass{
     }
 
     //Utility Function to find RandomNumber within a given Range
-    public static double findRandomWithRange(int min,int max){
-        return ((Math.random()*(max-min + 1)) - min);
+    public static int findRandomWithRange(int min,int max){
+        return ((int)(Math.random()*((max-min) + 1)) + min);
     }
 
     //Utility Function to calculate Percentage with eventSpace and totalSampleSpace
@@ -246,5 +246,25 @@ public class InputScanner extends  GenericTemplateClass{
     	inputString = matchInput.replaceAll(replaceWithString);
     	return inputString;
     }
+    
+    public static String[] initializeSuit(){
+    	String suit[] = {"","Clubs","Diamonds","Hearts","Spades"};
+    	return suit;
+    }
+    
+    public static String[] initializeRank(){
+    	String rank[] = {"","","2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace"};
+    	return rank;
+    }
+
+	public static void displayArray(String[][] displayArray, int row, int column) {
+		// TODO Auto-generated method stub
+		for(int i=0;i<row;i++){
+			for(int j=0;j<column;j++){
+				System.out.print(displayArray[i][j] + "     " );
+			}
+			System.out.println();
+		}
+	}
     
 }
