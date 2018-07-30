@@ -6,6 +6,8 @@ package com.training.sampleClassTypes;
 import java.util.Queue;
 
 import com.training.utility.CommonAlgorithms;
+import com.training.utility.InputScanner;
+import com.training.utility.QueueCustom;
 
 /**
  * @author bridgelabz
@@ -15,7 +17,8 @@ public class Player {
 	private String firstName;
 	private String lastName;
 	private String[] personalCards;
-	private Queue<String> cardQueue;
+	private QueueCustom<String> myQueue;
+
 	/**
 	 * @return the firstName
 	 */
@@ -57,17 +60,22 @@ public class Player {
 		this.personalCards = CommonAlgorithms.bubbleSortForString(this.personalCards);
 	}
 	/**
-	 * @return the cardQueue
+	 * @return the myQueue
 	 */
-	public Queue<String> getCardQueue() {
-		return this.cardQueue;
+	public QueueCustom<String> getMyQueue() {
+		return this.myQueue;
 	}
 	/**
-	 * @param cardQueue the cardQueue to set
+	 * @param myQueue the myQueue to set
 	 */
-	public void setCardQueue() {
+	public void setMyQueue() {
+		this.myQueue = new QueueCustom<String>();
+		String suit[] = InputScanner.initializeSuit();
+		String rank[] = InputScanner.initializeRank();
 		for(int i=0;i<this.personalCards.length;i++){
-			this.cardQueue.add(this.personalCards[i]);
+			String element = suit[Integer.valueOf(this.personalCards[i].substring(0, 1))];
+			element = element + " " + rank[Integer.valueOf(this.personalCards[i].substring(2, this.personalCards[i].length()))];
+			this.myQueue.enQueueCustom(element);
 		}
 	}
 }

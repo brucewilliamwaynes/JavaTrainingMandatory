@@ -3,6 +3,7 @@
  */
 package com.training.objectOrientedProgramming;
 
+import java.util.ArrayList;
 import java.util.Queue;
 
 import com.training.sampleClassTypes.Player;
@@ -81,35 +82,42 @@ public class DeckOfCards {
 			eachPlayer = inSc.inputInteger();
 		}while(totalPlayers * eachPlayer > 108);
 		
-		Queue<Player> playerList = null ;
+		inSc = new InputScanner();
 		
+		ArrayList<Player> playerList = new ArrayList<Player>();
 		
 		for(int i=0;i<totalPlayers;i++){
 			Player player = new Player();
 			System.out.println("Enter your name !");
-			player.setFirstName(inSc.inputString());
-			playerList.add(player);
+			String name = inSc.inputString();
+			player.setFirstName(name);
+			playerList.add(i,player);
 		}
+		
+		
+		Player currentPlayer;
 		
 		for(int i=0;i<totalPlayers;i++){
-				Player currentPlayer = new Player();
-				currentPlayer = playerList.peek();
-				playerList.remove();
+				currentPlayer = playerList.get(i);
+//				playerList.remove(i);
+				System.out.println("Drawing cards for " + currentPlayer.getFirstName());
 				viewPlayerCards(eachPlayer);
-				currentPlayer.setPersonalCards(this.playerCards);
-				currentPlayer.setCardQueue();
-				playerList.add(currentPlayer);
+				currentPlayer.setPersonalCards(playerCards);
+				currentPlayer.sortCards();
+				currentPlayer.setMyQueue();
+				playerList.set(i, currentPlayer);
 		}
 		
-	while(!playerList.isEmpty()){
-		Player currentPlayer = new Player();
-		System.out.println("Hi  " + currentPlayer.getFirstName());
-		System.out.println("Your deck of Cards is ----");
-		while(!currentPlayer.getCardQueue().isEmpty()){
-			
+		int i=0;
+		
+		while(i<totalPlayers){
+			currentPlayer = playerList.get(i);
+			System.out.println("Hi  " + currentPlayer.getFirstName());
+			System.out.println("Your deck of Cards is ----");
+			while(!currentPlayer.getMyQueue().isEmptyQueueCustom()){
+				currentPlayer.getMyQueue().displayQueue();
+			}
+			i++;
 		}
-		
-	}
-		
 	}
 }
