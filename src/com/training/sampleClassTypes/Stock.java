@@ -92,8 +92,8 @@ public class Stock {
 				JSONObject stockObj = (JSONObject)shareJSON.get(key);
 				Stock currentStock = new Stock();
 				currentStock.setStockName((String) stockObj.get("CompanyName"));
-				currentStock.setNumberOfShares((int) stockObj.get("NumberOfStock"));
-				currentStock.setEachSharePrice((double) stockObj.get("PricePerShare"));
+				currentStock.setNumberOfShares((Integer.parseInt(String.valueOf(stockObj.get("NumberOfStock")))));
+				currentStock.setEachSharePrice(Double.valueOf(String.valueOf(stockObj.get("PricePerShare"))) );
 				stockList.add(currentStock);
 			}
 		}
